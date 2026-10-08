@@ -9,6 +9,28 @@ import 'process_engine_test.dart' show TestClock;
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   test(
+    'demo seed is labeled and cannot overwrite progress; reset rotates profile',
+    () async {
+      final library = await ContentLibrary.load(),
+          db = SaveDatabase.forTesting(NativeDatabase.memory());
+      final c = AppController(library, db);
+      c.seedDemo();
+      expect(c.settings['demo'], true);
+      expect(c.completed.length, 2);
+      c.seedDemo();
+      expect(c.xp, 60);
+      final oldId = c.profileId;
+      c.settings['timeLimit'] = 15;
+      c.sessionSeconds = 900;
+      await c.reset();
+      expect(c.profileId, isNot(oldId));
+      expect(c.breakRequired, false);
+      expect(c.completed, isEmpty);
+      expect(c.settings['demo'], isNull);
+      await db.close();
+    },
+  );
+  test(
     'plant growth requires care, persists, and grants one plant card',
     () async {
       final clock = TestClock(),

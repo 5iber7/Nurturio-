@@ -38,6 +38,15 @@ class VillageScreen extends ConsumerWidget {
           ],
         ),
         const SizedBox(height: 24),
+        if (c.settings['demo'] == true)
+          const Padding(
+            padding: EdgeInsets.only(bottom: 16),
+            child: SoftCard(
+              child: Text(
+                'Demo village · example progress. Reset it in the parent area.',
+              ),
+            ),
+          ),
         if (c.decorations.isNotEmpty)
           SoftCard(
             color: const Color(0xFFFFEDC5),

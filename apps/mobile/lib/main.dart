@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app/nurturio_app.dart';
@@ -20,6 +21,9 @@ Future<void> main() async {
   try {
     final library = await ContentLibrary.load();
     final controller = await AppController.load(library, SaveDatabase());
+    if (kDebugMode && const bool.fromEnvironment('DEMO_MODE')) {
+      controller.seedDemo();
+    }
     try {
       await CloudService.initialize();
     } catch (_) {

@@ -84,6 +84,26 @@ class AppController extends ChangeNotifier {
   }
 
   int get level => 1 + xp ~/ 120;
+  void seedDemo() {
+    if (onboarded || completed.isNotEmpty) return;
+    settings.addAll({
+      'demo': true,
+      'onboarded': true,
+      'motion': false,
+      'sound': false,
+    });
+    for (final id in ['honey-1', 'honey-2']) {
+      completed.add(id);
+      processes[id] = ProcessInstance(
+        questId: id,
+        status: ProcessStatus.completed,
+      );
+    }
+    xp = 60;
+    coins = 20;
+    persist();
+  }
+
   bool get onboarded => settings['onboarded'] == true;
   bool get breakRequired =>
       (settings['timeLimit'] as int) > 0 &&

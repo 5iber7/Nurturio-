@@ -27,6 +27,10 @@ No cloud account or credentials are needed for offline gameplay. Select an emula
 
 On this development computer Flutter is at `C:\Users\sal3h\develop\flutter\bin\flutter.bat`; use its absolute path if Flutter is not on PATH. Locally installed build tools live in ignored `.tools/` and are not part of the repository.
 
+## Developer demo
+
+On a fresh local save, `flutter run --dart-define=DEMO_MODE=true` seeds clearly labeled example progress. Existing progress is preserved; release builds cannot auto-seed this demo.
+
 ## Optional browser preview
 
 ```sh
@@ -84,3 +88,4 @@ Deploy migrations/functions only after selecting and reviewing the correct proje
 Destination: `https://github.com/5iber7/Nurturio-`. Development branch: `codex/nurturio-build`. CI checks source and creates build artifacts after push. Store publishing and signing are separate steps. See [GitHub setup](docs/GITHUB_SETUP.md).
 
 Original source has no open-source license grant yet; the owner should select one. Nunito uses SIL OFL, and dependency licenses remain applicable. No paid assets, user photos, secrets or signing files belong in this repository.
+

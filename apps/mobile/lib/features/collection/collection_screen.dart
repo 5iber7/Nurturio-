@@ -19,6 +19,37 @@ class CollectionScreen extends ConsumerWidget {
         Text('${c.completed.length} discoveries · ${c.coins} coins'),
         const SizedBox(height: 24),
         Text(
+          'Tools you have explored',
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+        const SizedBox(height: 12),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            for (final tool in [
+              ('honey-3', 'Protective veil'),
+              ('honey-7', 'Honey extractor'),
+              ('olive-4', 'Olive crusher'),
+              ('olive-6', 'Decanter'),
+              ('chicken-2', 'Coop & perch'),
+              ('chicken-4', 'Drinking station'),
+              ('garden-4', 'Watering can'),
+            ])
+              Chip(
+                avatar: Icon(
+                  c.completed.contains(tool.$1)
+                      ? Icons.handyman_outlined
+                      : Icons.lock_outline,
+                  size: 18,
+                  color: olive,
+                ),
+                label: Text(tool.$2),
+              ),
+          ],
+        ),
+        const SizedBox(height: 24),
+        Text(
           'Your world badges',
           style: Theme.of(context).textTheme.titleLarge,
         ),
