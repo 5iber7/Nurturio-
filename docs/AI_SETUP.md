@@ -1,6 +1,14 @@
 # Supabase and AI setup
 
-The backend is implemented as migrations plus five Edge Functions. It has not been deployed into the unrelated project found in the current connection.
+The backend is implemented as migrations plus five Edge Functions. Nurturio's selected project is `nntizitzglpyfepnmasp`. Only client Auth is connected in the current release; game-data functions and migrations are not deployed. The administrative connector cannot access this project. The unrelated project found in the current connection has not been modified.
+
+## Optional account configuration
+
+The public build uses email/password sign-up and sign-in. Supply only `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` through an ignored JSON file and `--dart-define-from-file=PATH`. Do not include service-role or provider keys. Adult accounts are optional; guest play and local saves remain available.
+
+In Authentication → URL Configuration, set Site URL and allowed redirect URL to `https://nurturio.jauntybud16.chatgpt.site`. Keep email confirmations enabled. Supabase's default SMTP restricts delivery to project-team addresses; configure custom SMTP in the dashboard for general public signup. Do not place SMTP credentials in client configuration. Verify confirmation delivery and first sign-in using a real test account before advertising unrestricted account availability.
+
+`CLOUD_SYNC_ENABLED` defaults to false. Enable it only after deploying and validating game-data functions and their server authorization. Signing in currently does not upload the local save. Email confirmation/session/sign-out/error behavior is tested using the real Supabase SDK with a controlled HTTP transport; live successful email delivery is not inferred from those tests.
 
 1. Install Docker and a compatible Supabase CLI for the full local stack.
 2. Run local start/reset, apply migrations and seed content, and test authentication with two accounts.

@@ -32,6 +32,9 @@ class CloudService {
   static const url = String.fromEnvironment('SUPABASE_URL');
   static const key = String.fromEnvironment('SUPABASE_PUBLISHABLE_KEY');
   static bool get configured => url.isNotEmpty && key.isNotEmpty;
+  static bool initialized = false;
+  static bool get available => configured && initialized;
+  static const syncEnabled = bool.fromEnvironment('CLOUD_SYNC_ENABLED');
   static Future<void> initialize() async {
     if (configured) {
       await Supabase.initialize(
@@ -41,6 +44,7 @@ class CloudService {
           localStorage: SecureAuthStorage(),
         ),
       );
+      initialized = true;
     }
   }
 

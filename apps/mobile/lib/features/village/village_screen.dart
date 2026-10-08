@@ -31,6 +31,11 @@ class VillageScreen extends ConsumerWidget {
               ),
             ),
             IconButton(
+              tooltip: 'Account',
+              onPressed: () => context.push('/account'),
+              icon: const Icon(Icons.person_outline),
+            ),
+            IconButton(
               tooltip: 'Settings',
               onPressed: () => context.push('/settings'),
               icon: const Icon(Icons.tune),

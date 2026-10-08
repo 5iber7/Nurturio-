@@ -44,7 +44,6 @@ class _NurturioAppState extends ConsumerState<NurturioApp>
         if (!c.onboarded && state.uri.path != '/onboarding') {
           return '/onboarding';
         }
-        if (state.uri.path == '/account' && !c.parentVerified) return '/parent';
         if (c.breakRequired &&
             !['/parent', '/settings', '/break'].contains(state.uri.path)) {
           return '/break';

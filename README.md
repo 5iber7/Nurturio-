@@ -41,7 +41,7 @@ flutter build web
 python -m http.server 5180 --directory build/web
 ```
 
-Open `http://localhost:5180`. SQLite's WebAssembly binary and the Drift worker are included for local browser persistence. The hosted browser build uses Sites; `.openai/hosting.json` binds this repository to its private Site. Copy the tested `apps/mobile/build/web` output into ignored `dist/` before packaging through the Sites source workflow. Never publish cloud credentials.
+Open `http://localhost:5180`. SQLite's WebAssembly binary and the Drift worker are included for local browser persistence. The [public browser app](https://nurturio.jauntybud16.chatgpt.site) uses Sites; `.openai/hosting.json` binds this repository to that Site. Copy the tested `apps/mobile/build/web` output into ignored `dist/` before packaging through the Sites source workflow. Never publish privileged cloud credentials.
 
 ## Checks
 
@@ -72,7 +72,7 @@ Add a topic pack with an existing template, register it in `manifest.json`, and 
 
 ## Optional Supabase configuration
 
-Use a dedicated development Supabase project, or the local stack with Docker. No unrelated remote project has been modified. Run `supabase --help` and the relevant subcommand help for your installed CLI, then:
+Nurturio's selected project is `nntizitzglpyfepnmasp`; the published build connects optional adult email/password accounts. Guest play remains public, and progress stays local. Game-data deployment is deferred. See [account configuration](docs/AI_SETUP.md) for email confirmation URLs and custom SMTP; positive email delivery must be checked on the real project. No unrelated remote project has been modified. For the local stack with Docker, run `supabase --help` and the relevant subcommand help for your installed CLI, then:
 
 ```sh
 supabase start
