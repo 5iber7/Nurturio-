@@ -82,10 +82,10 @@ class _QuestScreenState extends ConsumerState<QuestScreen>
             LessonVideo(url: q.videoUrl!, transcript: q.videoTranscript!),
           Text(
             'LESSON ${q.order + 1} OF ${topic.quests.length}',
-            style: const TextStyle(
+            style: TextStyle(
               letterSpacing: 2,
               fontWeight: FontWeight.bold,
-              color: olive,
+              color: accent(context),
             ),
           ),
           const SizedBox(height: 10),
@@ -96,7 +96,7 @@ class _QuestScreenState extends ConsumerState<QuestScreen>
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Icon(Icons.schedule, color: olive),
+                Icon(Icons.schedule, color: accent(context)),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
@@ -167,12 +167,12 @@ class _QuestScreenState extends ConsumerState<QuestScreen>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'DID YOU KNOW?',
                     style: TextStyle(
                       letterSpacing: 1.5,
                       fontWeight: FontWeight.bold,
-                      color: olive,
+                      color: accent(context),
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -223,7 +223,7 @@ class _QuestScreenState extends ConsumerState<QuestScreen>
               ),
           ],
           if (p.status == ProcessStatus.completed) ...[
-            const Icon(Icons.verified_rounded, size: 84, color: olive),
+            Icon(Icons.verified_rounded, size: 84, color: accent(context)),
             const SizedBox(height: 18),
             Text(
               'A new discovery!',

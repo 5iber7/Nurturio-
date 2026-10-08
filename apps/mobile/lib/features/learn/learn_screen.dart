@@ -43,7 +43,10 @@ class _LearnScreenState extends ConsumerState<LearnScreen> {
               child: SoftCard(
                 child: ListTile(
                   contentPadding: EdgeInsets.zero,
-                  leading: const Icon(Icons.menu_book_outlined, color: olive),
+                  leading: Icon(
+                    Icons.menu_book_outlined,
+                    color: accent(context),
+                  ),
                   title: Text(
                     topic.subject,
                     style: Theme.of(context).textTheme.titleLarge,
@@ -95,7 +98,7 @@ class _LearnScreenState extends ConsumerState<LearnScreen> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Icon(Icons.bookmark_outline, color: olive),
+                      Icon(Icons.bookmark_outline, color: accent(context)),
                       const SizedBox(width: 12),
                       Expanded(
                         child: Text.rich(
@@ -127,7 +130,7 @@ class _LearnScreenState extends ConsumerState<LearnScreen> {
               child: SoftCard(
                 padding: const EdgeInsets.all(12),
                 child: ListTile(
-                  leading: const Icon(Icons.eco_outlined, color: olive),
+                  leading: Icon(Icons.eco_outlined, color: accent(context)),
                   title: Text(
                     plant['name'],
                     style: const TextStyle(fontWeight: FontWeight.bold),
@@ -196,9 +199,9 @@ class ArticleScreen extends ConsumerWidget {
                     children: [
                       Text(
                         key.toUpperCase(),
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: olive,
+                          color: accent(context),
                           letterSpacing: 1,
                         ),
                       ),

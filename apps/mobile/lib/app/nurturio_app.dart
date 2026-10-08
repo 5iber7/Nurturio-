@@ -182,6 +182,12 @@ class _NurturioAppState extends ConsumerState<NurturioApp>
     title: 'Nurturio',
     debugShowCheckedModeBanner: false,
     theme: nurturioTheme(),
+    darkTheme: nurturioTheme(brightness: Brightness.dark),
+    themeMode: switch (ref.watch(controllerProvider).settings['theme']) {
+      'dark' => ThemeMode.dark,
+      'light' => ThemeMode.light,
+      _ => ThemeMode.system,
+    },
     routerConfig: router,
     localizationsDelegates: AppLocalizations.localizationsDelegates,
     supportedLocales: AppLocalizations.supportedLocales,

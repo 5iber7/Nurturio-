@@ -33,12 +33,12 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
         child: PageBody(
           children: [
             const SizedBox(height: 24),
-            const Text(
+            Text(
               'NURTURIO',
               style: TextStyle(
                 letterSpacing: 4,
                 fontWeight: FontWeight.w800,
-                color: olive,
+                color: accent(context),
               ),
             ),
             WorldArt(

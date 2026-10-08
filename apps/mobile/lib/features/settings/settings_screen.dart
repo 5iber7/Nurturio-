@@ -33,6 +33,20 @@ class SettingsScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 20),
           DropdownButtonFormField<String>(
+            initialValue: c.settings['theme'] ?? 'system',
+            decoration: const InputDecoration(labelText: 'Appearance'),
+            items: const [
+              DropdownMenuItem(
+                value: 'system',
+                child: Text('Use device setting'),
+              ),
+              DropdownMenuItem(value: 'light', child: Text('Light')),
+              DropdownMenuItem(value: 'dark', child: Text('Dark')),
+            ],
+            onChanged: (v) => c.setSetting('theme', v),
+          ),
+          const SizedBox(height: 16),
+          DropdownButtonFormField<String>(
             initialValue: c.settings['reading'],
             decoration: const InputDecoration(labelText: 'Reading level'),
             items: const [

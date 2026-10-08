@@ -16,7 +16,7 @@ class VillageScreen extends ConsumerWidget {
       children: [
         Row(
           children: [
-            const Icon(Icons.spa_rounded, color: olive, size: 30),
+            Icon(Icons.spa_rounded, color: accent(context), size: 30),
             const SizedBox(width: 8),
             Expanded(
               child: Align(
@@ -56,7 +56,7 @@ class VillageScreen extends ConsumerWidget {
                   c.decorations.contains('garden-bench')
                       ? Icons.weekend_outlined
                       : Icons.local_florist,
-                  color: olive,
+                  color: accent(context),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
@@ -92,7 +92,11 @@ class VillageScreen extends ConsumerWidget {
             color: const Color(0xFFE7EDD7),
             child: Row(
               children: [
-                const Icon(Icons.play_circle_outline, size: 40, color: olive),
+                Icon(
+                  Icons.play_circle_outline,
+                  size: 40,
+                  color: accent(context),
+                ),
                 const SizedBox(width: 16),
                 Expanded(
                   child: Column(
@@ -147,7 +151,7 @@ class VillageScreen extends ConsumerWidget {
                       onTap: () => context.push('/topic/${topic.id}'),
                       child: ExcludeSemantics(
                         child: Material(
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.surfaceContainer,
                           borderRadius: BorderRadius.circular(24),
                           clipBehavior: Clip.antiAlias,
                           child: InkWell(
@@ -182,9 +186,9 @@ class VillageScreen extends ConsumerWidget {
                                                   .titleLarge,
                                             ),
                                           ),
-                                          const Icon(
+                                          Icon(
                                             Icons.arrow_outward,
-                                            color: olive,
+                                            color: accent(context),
                                           ),
                                         ],
                                       ),
@@ -198,7 +202,9 @@ class VillageScreen extends ConsumerWidget {
                                         minHeight: 6,
                                         borderRadius: BorderRadius.circular(6),
                                         color: Color(topic.color),
-                                        backgroundColor: cream,
+                                        backgroundColor: Theme.of(context)
+                                            .colorScheme
+                                            .surface,
                                       ),
                                       const SizedBox(height: 8),
                                       Text(
@@ -223,7 +229,7 @@ class VillageScreen extends ConsumerWidget {
         SoftCard(
           child: Row(
             children: [
-              const Icon(Icons.emoji_nature, size: 38, color: olive),
+              Icon(Icons.emoji_nature, size: 38, color: accent(context)),
               const SizedBox(width: 16),
               const Expanded(
                 child: Text(
@@ -275,7 +281,7 @@ class TopicScreen extends ConsumerWidget {
                   leading: CircleAvatar(
                     backgroundColor: Color(t.color).withValues(alpha: .2),
                     child: c.completed.contains(q.id)
-                        ? const Icon(Icons.check, color: olive)
+                        ? Icon(Icons.check, color: accent(context))
                         : Text('${q.order + 1}'),
                   ),
                   title: Text(

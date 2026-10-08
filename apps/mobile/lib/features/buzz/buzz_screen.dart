@@ -65,7 +65,7 @@ class _BuzzScreenState extends ConsumerState<BuzzScreen> {
             color: const Color(0xFFFFEDC5),
             child: Row(
               children: [
-                const Icon(Icons.emoji_nature, size: 48, color: olive),
+                Icon(Icons.emoji_nature, size: 48, color: accent(context)),
                 const SizedBox(width: 16),
                 Expanded(
                   child: Column(

@@ -9,6 +9,7 @@
 - Offline encyclopedia, eight plant profiles, glossary, reference notes and curated Ask Buzz.
 - Camera/gallery previews with metadata stripping; identification adapter and result flow are disabled in production by default.
 - Optional music, action sounds, read-aloud, reduced motion, parent PIN, session limits, local export/deletion and native readiness reminders.
+- Light, Dark and device-following appearance in Settings, persisted locally.
 - Supabase migrations, row ownership, atomic sync/reward merge, authenticated functions, export/deletion and gated Gemini integration.
 
 This is a working initial release candidate, not a claim of app-store approval. Check [BUILD_STATUS.md](BUILD_STATUS.md) and [docs/RELEASE_BLOCKERS.md](docs/RELEASE_BLOCKERS.md) for actual verification and pending external setup.
@@ -40,7 +41,7 @@ flutter build web
 python -m http.server 5180 --directory build/web
 ```
 
-Open `http://localhost:5180`. SQLite's WebAssembly binary and the Drift worker are included for local browser persistence. Production web hosting is outside the native release scope.
+Open `http://localhost:5180`. SQLite's WebAssembly binary and the Drift worker are included for local browser persistence. The hosted browser build uses Sites; `.openai/hosting.json` binds this repository to its private Site. Copy the tested `apps/mobile/build/web` output into ignored `dist/` before packaging through the Sites source workflow. Never publish cloud credentials.
 
 ## Checks
 

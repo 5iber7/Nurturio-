@@ -240,10 +240,12 @@ class _QuestPlayState extends State<QuestPlay> {
                     padding: const EdgeInsets.all(14),
                     decoration: BoxDecoration(
                       color: candidates.isNotEmpty
-                          ? const Color(0xFFE2EDD6)
-                          : Colors.white,
+                          ? Theme.of(context).colorScheme.primaryContainer
+                          : Theme.of(context).colorScheme.surfaceContainer,
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: const Color(0xFF456A43)),
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                     ),
                     child: Text(
                       target,

@@ -28,6 +28,7 @@ class AppController extends ChangeNotifier {
   final List<Map<String, dynamic>> scans = [];
   final Map<String, dynamic> settings = {
     'reading': 'Simple',
+    'theme': 'system',
     'age': 'under13',
     'onboarded': false,
     'pace': 'guided',
@@ -329,6 +330,7 @@ class AppController extends ChangeNotifier {
     settings.clear();
     settings.addAll({
       'reading': 'Simple',
+      'theme': 'system',
       'age': 'under13',
       'onboarded': false,
       'pace': 'guided',

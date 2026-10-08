@@ -137,7 +137,7 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(Icons.center_focus_strong, size: 48, color: olive),
+              Icon(Icons.center_focus_strong, size: 48, color: accent(context)),
               const SizedBox(height: 12),
               Text(
                 ai.mock
@@ -250,7 +250,7 @@ class _DiscoverScreenState extends ConsumerState<DiscoverScreen> {
             child: SoftCard(
               padding: const EdgeInsets.all(10),
               child: ListTile(
-                leading: const Icon(Icons.eco_outlined, color: olive),
+                leading: Icon(Icons.eco_outlined, color: accent(context)),
                 title: Text(plant['name']),
                 subtitle: const Text(
                   'Manually selected · no photo identification',

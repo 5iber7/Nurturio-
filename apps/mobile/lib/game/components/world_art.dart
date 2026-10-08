@@ -37,6 +37,7 @@ class WorldPainter extends CustomPainter {
   @override
   void paint(Canvas c, Size s) {
     c.save();
+    c.clipRect(Offset.zero & s);
     c.scale(s.width / 400, s.height / 230);
     void oval(double x, double y, double w, double h, Color color) =>
         c.drawOval(Rect.fromLTWH(x, y, w, h), Paint()..color = color);

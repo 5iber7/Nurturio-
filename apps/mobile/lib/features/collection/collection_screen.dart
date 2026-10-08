@@ -42,7 +42,7 @@ class CollectionScreen extends ConsumerWidget {
                       ? Icons.handyman_outlined
                       : Icons.lock_outline,
                   size: 18,
-                  color: olive,
+                  color: accent(context),
                 ),
                 label: Text(tool.$2),
               ),
@@ -66,7 +66,7 @@ class CollectionScreen extends ConsumerWidget {
                         : Icons.lock_outline,
                     size: 42,
                     color: c.topicCount(t) == t.quests.length
-                        ? olive
+                        ? accent(context)
                         : Colors.grey,
                   ),
                   const SizedBox(width: 16),
@@ -103,7 +103,7 @@ class CollectionScreen extends ConsumerWidget {
                       ? Icons.eco
                       : Icons.lock_outline,
                   size: 18,
-                  color: olive,
+                  color: accent(context),
                 ),
                 label: Text(p['name']),
               ),
@@ -125,7 +125,7 @@ class CollectionScreen extends ConsumerWidget {
             child: SoftCard(
               child: Row(
                 children: [
-                  const Icon(Icons.local_florist_outlined, color: olive),
+                  Icon(Icons.local_florist_outlined, color: accent(context)),
                   const SizedBox(width: 12),
                   Expanded(child: Text(d.$2)),
                   FilledButton(

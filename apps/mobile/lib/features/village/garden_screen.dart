@@ -55,10 +55,10 @@ class _GardenScreenState extends ConsumerState<GardenScreen> {
                       children: [
                         Text(
                           'BED ${slot + 1}',
-                          style: const TextStyle(
+                          style: TextStyle(
                             letterSpacing: 1.5,
                             fontWeight: FontWeight.bold,
-                            color: olive,
+                            color: accent(context),
                           ),
                         ),
                         if (bed == null ||
