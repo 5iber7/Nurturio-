@@ -14,7 +14,7 @@ Four worlds, 32 interactive quests, six reusable mechanics, offline saves, XP/co
 - PostgreSQL migration/RLS/idempotency/prerequisite/currency/deletion suite passed in PGlite with Auth/Storage fixtures.
 - Content validator: 32 quests, eight plants, 11 source references.
 - Android debug APK built successfully at `apps/mobile/build/app/outputs/flutter-apk/app-debug.apk`.
-- Web build succeeded; manual browser QA completed a honey lesson and verified progress survived reload, and planting/watering worked.
+- Web build succeeded; manual browser QA completed a honey lesson and verified progress survived reload. Planting, watering, harvesting and collecting a plant card worked. Phone and tablet layouts and accessible world navigation were checked.
 - GitHub CI built Android and iOS simulator successfully in the initial source run. Its integration-test formatting issue was corrected. Mobile and backend jobs passed on source commit `65a8799`; the final accessibility revision and native simulator flows are checked by the linked PR's current workflow.
 - Tracked-file and Git-history secret scans passed.
 

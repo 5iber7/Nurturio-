@@ -8,7 +8,7 @@
 - [x] 6. Olive oil, chickens, garden and eight plant profiles with growing beds.
 - [x] 7. Collection, coins, settings, parent controls, accessibility and notifications implemented. Physical permission/notification checks remain release acceptance work.
 - [x] 8. Visual polish, branded icons, native configuration and actual UI flow tests. Native device CI is configured; physical-device QA remains open.
-- [ ] 9. Final documentation/checks/push/PR and final CI verification.
+- [x] 9. Documentation, local checks, source push and draft PR completed. CI checks the final branch, including native simulator flows; consult the PR checks for the current result.
 
 Acceptance criteria and constraints are in NURTURIO_BUILD_PROMPT.md. Completion means behavior is implemented and checked, not merely a screen shell.
 
