@@ -55,7 +55,10 @@ class _BuzzScreenState extends ConsumerState<BuzzScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Ask Buzz')),
+      appBar: AppBar(
+        leading: const VillageBackButton(),
+        title: const Text('Ask Buzz'),
+      ),
       body: PageBody(
         children: [
           SoftCard(

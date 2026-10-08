@@ -12,6 +12,8 @@
     "harvest": "Look for variety-appropriate ripe fruit.",
     "note": "Many varieties benefit from support.",
     "duration": "Variety- and climate-dependent; follow local guidance.",
+    "gameGrowthSeconds": 60,
+    "gardenPaceSeconds": 3600,
     "reviewStatus": "expert-review-required"
   },
   {
@@ -27,6 +29,8 @@
     "harvest": "Enjoy the bloom; seed maturity is a later stage.",
     "note": "Timeline varies by variety; research the seed packet locally.",
     "duration": "Variety- and climate-dependent; follow local guidance.",
+    "gameGrowthSeconds": 45,
+    "gardenPaceSeconds": 3600,
     "reviewStatus": "expert-review-required"
   },
   {
@@ -42,6 +46,8 @@
     "harvest": "Pick suitable leaves as the plant establishes.",
     "note": "Mint can spread; a container can help manage it.",
     "duration": "Variety- and climate-dependent; follow local guidance.",
+    "gameGrowthSeconds": 25,
+    "gardenPaceSeconds": 3600,
     "reviewStatus": "expert-review-required"
   },
   {
@@ -57,6 +63,8 @@
     "harvest": "Check variety-specific root maturity.",
     "note": "Prepare suitable soil; variety and soil influence root development.",
     "duration": "Variety- and climate-dependent; follow local guidance.",
+    "gameGrowthSeconds": 50,
+    "gardenPaceSeconds": 3600,
     "reviewStatus": "expert-review-required"
   },
   {
@@ -72,6 +80,8 @@
     "harvest": "Pick fully ripe fruit.",
     "note": "Home growing commonly begins with transplants.",
     "duration": "Variety- and climate-dependent; follow local guidance.",
+    "gameGrowthSeconds": 65,
+    "gardenPaceSeconds": 3600,
     "reviewStatus": "expert-review-required"
   },
   {
@@ -87,6 +97,8 @@
     "harvest": "Enjoy flowers rather than assuming they are food.",
     "note": "Marigold is a common name; do not assume every flower is edible.",
     "duration": "Variety- and climate-dependent; follow local guidance.",
+    "gameGrowthSeconds": 40,
+    "gardenPaceSeconds": 3600,
     "reviewStatus": "expert-review-required"
   },
   {
@@ -102,6 +114,8 @@
     "harvest": "Harvest leaves or heads as appropriate to the type.",
     "note": "Heat can encourage bolting.",
     "duration": "Variety- and climate-dependent; follow local guidance.",
+    "gameGrowthSeconds": 30,
+    "gardenPaceSeconds": 3600,
     "reviewStatus": "expert-review-required"
   },
   {
@@ -117,6 +131,8 @@
     "harvest": "Pick suitable leaves as growth establishes.",
     "note": "Protect from unsuitable cold conditions.",
     "duration": "Variety- and climate-dependent; follow local guidance.",
+    "gameGrowthSeconds": 35,
+    "gardenPaceSeconds": 3600,
     "reviewStatus": "expert-review-required"
   }
 ]

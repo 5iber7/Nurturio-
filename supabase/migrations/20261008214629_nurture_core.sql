@@ -87,7 +87,7 @@ alter table private.ai_usage_buckets enable row level security;
 alter table private.deletion_jobs enable row level security;
 grant select on public.accounts,public.player_profiles,public.progress_snapshots,public.reward_ledger,public.collection_items,public.profile_permissions,public.consent_records,public.scan_history to authenticated;
 grant select on public.content_versions to anon,authenticated;
-create policy account_read on public.accounts for select to authenticated using(id=(select auth.uid()) and not deleting);
+create policy account_read on public.accounts for select to authenticated using(id=(select auth.uid()));
 create policy profiles_read on public.player_profiles for select to authenticated using(owner_id=(select auth.uid()) and exists(select 1 from public.accounts a where a.id=owner_id and not a.deleting));
 create policy progress_read on public.progress_snapshots for select to authenticated using(exists(select 1 from public.player_profiles p where p.id=profile_id and p.owner_id=(select auth.uid())));
 create policy rewards_read on public.reward_ledger for select to authenticated using(exists(select 1 from public.player_profiles p where p.id=profile_id and p.owner_id=(select auth.uid())));
@@ -103,7 +103,7 @@ create function private.apply_snapshot(p_profile uuid,p_operation text,p_payload
 returns jsonb language plpgsql security definer set search_path='' as $$
 declare
   actor uuid:=auth.uid(); old_payload jsonb; old_revision bigint; merged jsonb;
-  done jsonb; decor jsonb; reward_count integer; spend integer; q text; step integer; world text;
+  done jsonb; decor jsonb; cards jsonb; reward_count integer; spend integer; q text; step integer; world text;
   existing_result jsonb;
 begin
   if actor is null then raise exception 'Authentication required' using errcode='42501'; end if;
@@ -131,11 +131,16 @@ begin
     spend:=spend+case q when 'flower-path' then 30 when 'sunny-sign' then 50 else 80 end;
   end loop;
   reward_count:=jsonb_array_length(done);
+  select coalesce(jsonb_agg(value order by value),'[]'::jsonb) into cards from (select distinct value from jsonb_array_elements_text(coalesce(old_payload->'plantCards','[]')||coalesce(p_payload->'plantCards','[]'))) d;
+  for q in select jsonb_array_elements_text(cards) loop
+    if q not in ('tomato','sunflower','mint','carrot','strawberry','marigold','lettuce','basil') then raise exception 'Unknown plant'; end if;
+  end loop;
   if spend>reward_count*10 then raise exception 'Insufficient coins' using errcode='P0001'; end if;
   merged:=jsonb_build_object('schemaVersion',1,'profileId',p_profile,'completed',done,'decorations',decor,'xp',reward_count*30,'coins',reward_count*10-spend,
     'settings',case when p_base_revision=old_revision then coalesce(p_payload->'settings','{}') else coalesce(old_payload->'settings','{}') end,
     'processes',case when p_base_revision=old_revision then coalesce(p_payload->'processes','[]') else coalesce(old_payload->'processes','[]') end,
-    'actions',case when p_base_revision=old_revision then coalesce(p_payload->'actions','{}') else coalesce(old_payload->'actions','{}') end);
+    'actions',case when p_base_revision=old_revision then coalesce(p_payload->'actions','{}') else coalesce(old_payload->'actions','{}') end,
+    'plantCards',cards,'beds',case when p_base_revision=old_revision then coalesce(p_payload->'beds','{}') else coalesce(old_payload->'beds','{}') end);
   insert into public.progress_snapshots(profile_id,revision,payload) values(p_profile,old_revision+1,merged)
     on conflict(profile_id) do update set revision=excluded.revision,payload=excluded.payload,updated_at=now();
   insert into public.reward_ledger(profile_id,quest_id) select p_profile,jsonb_array_elements_text(done) on conflict do nothing;
@@ -151,7 +156,7 @@ returns jsonb language sql security invoker set search_path='' as $$ select priv
 revoke all on function public.sync_snapshot(uuid,text,jsonb,bigint) from public,anon;
 grant execute on function public.sync_snapshot(uuid,text,jsonb,bigint) to authenticated;
 
-create function public.take_ai_quota(p_limit integer default 20) returns boolean
+create function private.take_ai_quota(p_limit integer default 20) returns boolean
 language plpgsql security definer set search_path='' as $$
 declare actor uuid:=auth.uid(); allowed boolean;
 begin
@@ -161,6 +166,10 @@ begin
   on conflict(account_id,bucket_date) do update set calls=private.ai_usage_buckets.calls+1 where private.ai_usage_buckets.calls<p_limit returning true into allowed;
   return coalesce(allowed,false);
 end $$;
+revoke all on function private.take_ai_quota(integer) from public,anon;
+grant execute on function private.take_ai_quota(integer) to authenticated;
+create function public.take_ai_quota(p_limit integer default 20) returns boolean
+language sql security invoker set search_path='' as $$ select private.take_ai_quota(p_limit); $$;
 revoke all on function public.take_ai_quota(integer) from public,anon;
 grant execute on function public.take_ai_quota(integer) to authenticated;
 

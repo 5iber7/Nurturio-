@@ -11,6 +11,7 @@ class QuestItem {
 }
 
 class Quest {
+  final String? videoUrl, videoTranscript;
   final String id,
       topicId,
       title,
@@ -26,7 +27,9 @@ class Quest {
   final List<String> prerequisites, answers, sourceIds;
   final String question;
   Quest(Map<String, dynamic> j)
-    : id = j['id'],
+    : videoUrl = j['videoUrl'],
+      videoTranscript = j['videoTranscript'],
+      id = j['id'],
       topicId = j['topicId'],
       title = j['title'],
       template = j['template'],

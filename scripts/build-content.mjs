@@ -86,7 +86,7 @@ const plants = [
   ['marigold','Marigold','marigold','Usually warm season','Sunny position','Avoid persistently waterlogged soil.','Seedling → branches → buds → flowers','Enjoy flowers rather than assuming they are food.','Marigold is a common name; do not assume every flower is edible.'],
   ['lettuce','Lettuce','lettuce','Often cool season','Sun with climate-dependent protection','Check soil moisture regularly.','Seedling → leaves → harvestable plant','Harvest leaves or heads as appropriate to the type.','Heat can encourage bolting.'],
   ['basil','Basil','herbs','Warm season','Sunny position','Check moisture and provide drainage.','Seedling → branches → leaves','Pick suitable leaves as growth establishes.','Protect from unsuitable cold conditions.']
-].map(([id,name,source,season,sun,water,timeline,harvest,note])=>({id,name,sourceIds:[source],season,sun,water,timeline,harvest,note,duration:'Variety- and climate-dependent; follow local guidance.',reviewStatus:'expert-review-required'}));
+].map(([id,name,source,season,sun,water,timeline,harvest,note])=>({id,name,sourceIds:[source],season,sun,water,timeline,harvest,note,duration:'Variety- and climate-dependent; follow local guidance.',gameGrowthSeconds:{tomato:60,sunflower:45,mint:25,carrot:50,strawberry:65,marigold:40,lettuce:30,basil:35}[id],gardenPaceSeconds:3600,reviewStatus:'expert-review-required'}));
 writeFileSync(`${out}/plants.json`,JSON.stringify(plants,null,2)+'\n');
 writeFileSync(`${out}/sources.json`,JSON.stringify(sources,null,2)+'\n');
 writeFileSync(`${out}/manifest.json`,JSON.stringify({schemaVersion:1,contentVersion:'1.0.0',topics:worlds.map(w=>w.id),plants:'plants.json',sources:'sources.json'},null,2)+'\n');

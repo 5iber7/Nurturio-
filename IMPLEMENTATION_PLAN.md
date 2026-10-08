@@ -1,14 +1,15 @@
 # Nurturio implementation
 
-- [ ] 1. Flutter/native scaffold, theme, routes, configuration, CI.
-- [ ] 2. Content contracts, SQLite saves, process engine, reusable game templates and tests.
-- [ ] 3. Village, library, and complete honey quest loop.
-- [ ] 4. Supabase schema, ownership policies, optional synchronization and functions.
-- [ ] 5. Discover/photo flows, curated Buzz, gated Gemini adapter.
-- [ ] 6. Olive oil, chickens, garden and eight plant profiles.
-- [ ] 7. Collection, coins, settings, parent controls, accessibility and notifications.
-- [ ] 8. Visual polish, native configuration, integration/device checks.
-- [ ] 9. Documentation, final validation, commit and GitHub delivery.
+- [x] 1. Flutter/native scaffold, theme, routes, configuration, CI.
+- [x] 2. Content contracts, SQLite saves, process engine, reusable game templates and tests.
+- [x] 3. Village, library, and complete honey quest loop.
+- [x] 4. Supabase schema, ownership policies, optional synchronization and functions implemented and locally checked. Remote deployment awaits project selection.
+- [x] 5. Discover/photo flows, curated Buzz, gated Gemini adapter. Live restricted AI deliberately remains disabled.
+- [x] 6. Olive oil, chickens, garden and eight plant profiles with growing beds.
+- [x] 7. Collection, coins, settings, parent controls, accessibility and notifications implemented. Physical permission/notification checks remain release acceptance work.
+- [x] 8. Visual polish, branded icons, native configuration and actual UI flow tests. Native device CI is configured; physical-device QA remains open.
+- [ ] 9. Final documentation/checks/push/PR and final CI verification.
 
 Acceptance criteria and constraints are in NURTURIO_BUILD_PROMPT.md. Completion means behavior is implemented and checked, not merely a screen shell.
 
+These checkboxes describe implementation of the initial playable build. See docs/RELEASE_BLOCKERS.md for separate public-release requirements.

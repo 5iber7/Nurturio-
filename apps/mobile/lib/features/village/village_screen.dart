@@ -18,8 +18,18 @@ class VillageScreen extends ConsumerWidget {
           children: [
             const Icon(Icons.spa_rounded, color: olive, size: 30),
             const SizedBox(width: 8),
-            Text('nurturio', style: Theme.of(context).textTheme.headlineMedium),
-            const Spacer(),
+            Expanded(
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    'nurturio',
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                ),
+              ),
+            ),
             IconButton(
               tooltip: 'Settings',
               onPressed: () => context.push('/settings'),
@@ -48,25 +58,21 @@ class VillageScreen extends ConsumerWidget {
               ],
             ),
           ),
-        Row(
+        Text(
+          'A little care.\nA world of discovery.',
+          style: Theme.of(context).textTheme.displaySmall,
+        ),
+        const SizedBox(height: 12),
+        Wrap(
+          spacing: 12,
+          runSpacing: 8,
+          crossAxisAlignment: WrapCrossAlignment.center,
           children: [
-            Expanded(
-              child: Text(
-                'A little care.\nA world of discovery.',
-                style: Theme.of(context).textTheme.displaySmall,
-              ),
+            Chip(
+              avatar: const Icon(Icons.auto_awesome, size: 18),
+              label: Text('Level ${c.level}'),
             ),
-            const SizedBox(width: 12),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Chip(
-                  avatar: const Icon(Icons.auto_awesome, size: 18),
-                  label: Text('Level ${c.level}'),
-                ),
-                Text('${c.coins} coins · ${c.xp} XP'),
-              ],
-            ),
+            Text('${c.coins} coins · ${c.xp} XP'),
           ],
         ),
         const SizedBox(height: 12),
@@ -222,13 +228,22 @@ class TopicScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final c = ref.watch(controllerProvider), t = c.library.topic(topicId);
     return Scaffold(
-      appBar: AppBar(title: Text(t.name)),
+      appBar: AppBar(leading: const VillageBackButton(), title: Text(t.name)),
       body: PageBody(
         children: [
           WorldArt(world: t.id, height: 220),
           Text(t.subject, style: Theme.of(context).textTheme.displaySmall),
           const SizedBox(height: 10),
           Text(t.goal),
+          if (t.id == 'garden')
+            Padding(
+              padding: const EdgeInsets.only(top: 16),
+              child: FilledButton.icon(
+                onPressed: () => context.push('/garden'),
+                icon: const Icon(Icons.spa_outlined),
+                label: const Text('Open your growing beds'),
+              ),
+            ),
           const SizedBox(height: 24),
           for (final q in t.quests)
             Padding(

@@ -10,6 +10,7 @@ import 'package:uuid/uuid.dart';
 
 import 'app_controller.dart';
 import '../game/engine/process_engine.dart';
+import '../game/engine/growing_bed.dart';
 
 class SecureAuthStorage extends LocalStorage {
   final FlutterSecureStorage storage = const FlutterSecureStorage();
@@ -73,6 +74,13 @@ class CloudService {
     c.cloudRevision = data['revision'];
     c.completed.addAll(List<String>.from(remote['completed']));
     c.decorations.addAll(List<String>.from(remote['decorations']));
+    c.plantCards.addAll(List<String>.from(remote['plantCards'] ?? []));
+    (remote['beds'] as Map? ?? {}).forEach(
+      (key, value) => c.beds.putIfAbsent(
+        int.parse(key),
+        () => GrowingBed.fromJson(Map<String, dynamic>.from(value)),
+      ),
+    );
     c.xp = c.completed.length * 30;
     final costs = {'flower-path': 30, 'sunny-sign': 50, 'garden-bench': 80};
     c.coins =

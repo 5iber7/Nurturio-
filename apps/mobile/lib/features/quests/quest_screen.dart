@@ -10,6 +10,7 @@ import '../../core/app_controller.dart';
 import '../../game/engine/process_engine.dart';
 import '../../game/templates/quest_play.dart';
 import '../../game/components/world_art.dart';
+import 'lesson_video.dart';
 
 class QuestScreen extends ConsumerStatefulWidget {
   final String questId;
@@ -56,12 +57,16 @@ class _QuestScreenState extends ConsumerState<QuestScreen>
     final topic = c.library.topic(q.topicId);
     if (!c.available(q)) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Not quite yet')),
+        appBar: AppBar(
+          leading: const VillageBackButton(),
+          title: const Text('Not quite yet'),
+        ),
         body: const Center(child: Text('Finish the previous lesson first.')),
       );
     }
     return Scaffold(
       appBar: AppBar(
+        leading: const VillageBackButton(),
         title: Text(topic.name),
         actions: [
           IconButton(
@@ -73,6 +78,8 @@ class _QuestScreenState extends ConsumerState<QuestScreen>
       ),
       body: PageBody(
         children: [
+          if (q.videoUrl != null && q.videoTranscript != null)
+            LessonVideo(url: q.videoUrl!, transcript: q.videoTranscript!),
           Text(
             'LESSON ${q.order + 1} OF ${topic.quests.length}',
             style: const TextStyle(

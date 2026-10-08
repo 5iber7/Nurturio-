@@ -8,6 +8,7 @@ import '../core/app_controller.dart';
 import '../core/audio_service.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/village/village_screen.dart';
+import '../features/village/garden_screen.dart';
 import '../features/quests/quest_screen.dart';
 import '../features/learn/learn_screen.dart';
 import '../features/buzz/buzz_screen.dart';
@@ -51,6 +52,7 @@ class _NurturioAppState extends ConsumerState<NurturioApp>
         return null;
       },
       routes: [
+        GoRoute(path: '/garden', builder: (_, s) => const GardenScreen()),
         GoRoute(
           path: '/onboarding',
           builder: (_, s) => const OnboardingScreen(),

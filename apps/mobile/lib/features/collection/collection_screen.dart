@@ -59,6 +59,26 @@ class CollectionScreen extends ConsumerWidget {
             ),
           ),
         const SizedBox(height: 18),
+        Text('Plant cards', style: Theme.of(context).textTheme.titleLarge),
+        const SizedBox(height: 12),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            for (final p in c.library.plants)
+              Chip(
+                avatar: Icon(
+                  c.plantCards.contains(p['id'])
+                      ? Icons.eco
+                      : Icons.lock_outline,
+                  size: 18,
+                  color: olive,
+                ),
+                label: Text(p['name']),
+              ),
+          ],
+        ),
+        const SizedBox(height: 18),
         Text(
           'Decorate your village',
           style: Theme.of(context).textTheme.titleLarge,

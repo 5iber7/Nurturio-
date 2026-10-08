@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 const ink = Color(0xFF25382D),
     cream = Color(0xFFFFF8EB),
@@ -102,5 +103,21 @@ class PageBody extends StatelessWidget {
         children: children,
       ),
     ),
+  );
+}
+
+class VillageBackButton extends StatelessWidget {
+  const VillageBackButton({super.key});
+  @override
+  Widget build(BuildContext context) => IconButton(
+    tooltip: 'Back',
+    icon: const Icon(Icons.arrow_back),
+    onPressed: () {
+      if (context.canPop()) {
+        context.pop();
+      } else {
+        context.go('/village');
+      }
+    },
   );
 }

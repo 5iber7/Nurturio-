@@ -45,7 +45,10 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
     final c = ref.watch(controllerProvider);
     if (!CloudService.configured || c.settings['age'] != 'adult') {
       return Scaffold(
-        appBar: AppBar(title: const Text('Cloud account')),
+        appBar: AppBar(
+          leading: const VillageBackButton(),
+          title: const Text('Cloud account'),
+        ),
         body: const Center(
           child: Text('Cloud access is unavailable for this profile.'),
         ),
@@ -53,7 +56,10 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
     }
     final signedIn = cloud.client.auth.currentSession != null;
     return Scaffold(
-      appBar: AppBar(title: const Text('Adult cloud account')),
+      appBar: AppBar(
+        leading: const VillageBackButton(),
+        title: const Text('Adult cloud account'),
+      ),
       body: PageBody(
         children: [
           const SoftCard(

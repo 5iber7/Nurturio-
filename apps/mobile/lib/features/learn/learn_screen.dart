@@ -167,7 +167,10 @@ class ArticleScreen extends ConsumerWidget {
         ? List<String>.from(p!['sourceIds'])
         : q!.sourceIds;
     return Scaffold(
-      appBar: AppBar(title: const Text('Field notes')),
+      appBar: AppBar(
+        leading: const VillageBackButton(),
+        title: const Text('Field notes'),
+      ),
       body: PageBody(
         children: [
           Text(

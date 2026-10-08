@@ -21,7 +21,10 @@ class SettingsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final c = ref.watch(controllerProvider);
     return Scaffold(
-      appBar: AppBar(title: const Text('Make yourself comfortable')),
+      appBar: AppBar(
+        leading: const VillageBackButton(),
+        title: const Text('Make yourself comfortable'),
+      ),
       body: PageBody(
         children: [
           Text(
@@ -196,7 +199,10 @@ class _ParentScreenState extends ConsumerState<ParentScreen> {
   Widget build(BuildContext context) {
     final c = ref.watch(controllerProvider);
     return Scaffold(
-      appBar: AppBar(title: const Text('Parent & privacy area')),
+      appBar: AppBar(
+        leading: const VillageBackButton(),
+        title: const Text('Parent & privacy area'),
+      ),
       body: PageBody(
         children: [
           if (loading) const Center(child: CircularProgressIndicator()),

@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/legacy.dart';
 import 'package:uuid/uuid.dart';
 
 import '../game/engine/process_engine.dart';
+import '../game/engine/growing_bed.dart';
 import 'content.dart';
 import 'database.dart';
 
@@ -17,11 +18,13 @@ class AppController extends ChangeNotifier {
   final ContentLibrary library;
   final SaveDatabase database;
   final ProcessEngine engine;
-  final String profileId;
+  String profileId;
   final Set<String> completed = {};
   final Map<String, ProcessInstance> processes = {};
   final Map<String, Set<String>> actions = {};
   final Set<String> decorations = {};
+  final Map<int, GrowingBed> beds = {};
+  final Set<String> plantCards = {};
   final List<Map<String, dynamic>> scans = [];
   final Map<String, dynamic> settings = {
     'reading': 'Simple',
@@ -61,6 +64,12 @@ class AppController extends ChangeNotifier {
       c.cloudRevision = j['cloudRevision'] ?? 0;
       c.settings.addAll(Map<String, dynamic>.from(j['settings'] ?? {}));
       c.decorations.addAll(List<String>.from(j['decorations'] ?? []));
+      c.plantCards.addAll(List<String>.from(j['plantCards'] ?? []));
+      (j['beds'] as Map? ?? {}).forEach(
+        (k, v) => c.beds[int.parse(k)] = GrowingBed.fromJson(
+          Map<String, dynamic>.from(v),
+        ),
+      );
       c.scans.addAll(List<Map<String, dynamic>>.from(j['scans'] ?? []));
       for (final p in (j['processes'] as List? ?? [])) {
         final instance = ProcessInstance.fromJson(p);
@@ -168,7 +177,49 @@ class AppController extends ChangeNotifier {
     for (final p in processes.values) {
       engine.refresh(p);
     }
+    for (final bed in beds.values) {
+      engine.refresh(bed.process);
+    }
     notifyListeners();
+  }
+
+  void plant(int slot, String plantId) {
+    if (slot < 0 ||
+        slot > 2 ||
+        beds[slot]?.process.status == ProcessStatus.waiting ||
+        beds[slot]?.process.status == ProcessStatus.ready) {
+      return;
+    }
+    final plant = library.plants.firstWhere((p) => p['id'] == plantId);
+    final p = ProcessInstance(questId: 'plant-$plantId');
+    engine.start(p);
+    engine.finishInteraction(
+      p,
+      settings['pace'] == 'garden'
+          ? plant['gardenPaceSeconds']
+          : plant['gameGrowthSeconds'],
+    );
+    beds[slot] = GrowingBed(plantId, p);
+    persist();
+  }
+
+  void waterBed(int slot) {
+    final bed = beds[slot];
+    if (bed == null) return;
+    bed.wateredAt = engine.clock.now();
+    persist();
+  }
+
+  bool harvestBed(int slot) {
+    final bed = beds[slot];
+    if (bed == null ||
+        bed.needsCare(engine.clock.now()) ||
+        !engine.complete(bed.process)) {
+      return false;
+    }
+    plantCards.add(bed.plantId);
+    persist();
+    return true;
   }
 
   bool speedUp(Quest q, int answer) {
@@ -212,6 +263,8 @@ class AppController extends ChangeNotifier {
     'actions': actions.map((k, v) => MapEntry(k, v.toList())),
     'settings': settings,
     'decorations': decorations.toList(),
+    'plantCards': plantCards.toList(),
+    'beds': beds.map((k, v) => MapEntry(k.toString(), v.toJson())),
     'scans': scans,
   };
   void persist() {
@@ -241,13 +294,32 @@ class AppController extends ChangeNotifier {
     processes.clear();
     actions.clear();
     decorations.clear();
+    beds.clear();
+    plantCards.clear();
     scans.clear();
     xp = 0;
     coins = 0;
     streak = 0;
     lastDay = null;
-    settings['onboarded'] = false;
-    settings['cloud'] = false;
+    lastFreezeWeek = null;
+    cloudRevision = 0;
+    sessionSeconds = 0;
+    parentVerified = false;
+    profileId = const Uuid().v4();
+    settings.clear();
+    settings.addAll({
+      'reading': 'Simple',
+      'age': 'under13',
+      'onboarded': false,
+      'pace': 'guided',
+      'motion': true,
+      'readAloud': false,
+      'music': false,
+      'sound': true,
+      'notifications': false,
+      'timeLimit': 0,
+      'cloud': false,
+    });
     notifyListeners();
   }
 }

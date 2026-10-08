@@ -8,6 +8,27 @@ import 'process_engine_test.dart' show TestClock;
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+  test(
+    'plant growth requires care, persists, and grants one plant card',
+    () async {
+      final clock = TestClock(),
+          library = await ContentLibrary.load(),
+          db = SaveDatabase.forTesting(NativeDatabase.memory());
+      final c = AppController(library, db, clock: clock);
+      c.plant(0, 'basil');
+      clock.advance(100);
+      c.refresh();
+      expect(c.harvestBed(0), false);
+      c.waterBed(0);
+      expect(c.harvestBed(0), true);
+      expect(c.harvestBed(0), false);
+      await c.flush();
+      final restored = await AppController.load(library, db);
+      expect(restored.plantCards, {'basil'});
+      expect(restored.beds[0]!.plantId, 'basil');
+      await db.close();
+    },
+  );
   test('all 32 quests complete, saves reload, rewards cannot repeat', () async {
     final library = await ContentLibrary.load(),
         clock = TestClock(),
