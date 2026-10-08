@@ -1,0 +1,90 @@
+[
+  {
+    "id": "bees",
+    "publisher": "Penn State Extension",
+    "title": "Beekeeping resources",
+    "url": "https://extension.psu.edu/beekeeping-resources",
+    "accessedAt": "2026-10-09",
+    "reviewStatus": "expert-review-required"
+  },
+  {
+    "id": "bee-seasons",
+    "publisher": "Penn State Extension",
+    "title": "Honey bee management throughout the seasons",
+    "url": "https://extension.psu.edu/honey-bee-management-throughout-the-seasons",
+    "accessedAt": "2026-10-09",
+    "reviewStatus": "expert-review-required"
+  },
+  {
+    "id": "oil",
+    "publisher": "UC Davis",
+    "title": "Olive oil processing",
+    "url": "https://ucfoodquality.ucdavis.edu/olive-oil/olive-oil-processing",
+    "accessedAt": "2026-10-09",
+    "reviewStatus": "editorial-review-required"
+  },
+  {
+    "id": "oil-quality",
+    "publisher": "International Olive Council",
+    "title": "Olive oils",
+    "url": "https://www.internationaloliveoil.org/olive-world/olive-oil/",
+    "accessedAt": "2026-10-09",
+    "reviewStatus": "editorial-review-required"
+  },
+  {
+    "id": "chickens",
+    "publisher": "University of Minnesota Extension",
+    "title": "Raising chickens for eggs",
+    "url": "https://extension.umn.edu/agriculture/animals-and-livestock/poultry/raising-chickens-for-eggs",
+    "accessedAt": "2026-10-09",
+    "reviewStatus": "editorial-review-required"
+  },
+  {
+    "id": "tomato",
+    "publisher": "University of Minnesota Extension",
+    "title": "Growing tomatoes",
+    "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-tomatoes",
+    "accessedAt": "2026-10-09",
+    "reviewStatus": "editorial-review-required"
+  },
+  {
+    "id": "herbs",
+    "publisher": "University of Minnesota Extension",
+    "title": "Growing herbs",
+    "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-herbs",
+    "accessedAt": "2026-10-09",
+    "reviewStatus": "editorial-review-required"
+  },
+  {
+    "id": "strawberry",
+    "publisher": "University of Maryland Extension",
+    "title": "Growing strawberries",
+    "url": "https://www.extension.umd.edu/resource/growing-strawberries-home-garden",
+    "accessedAt": "2026-10-09",
+    "reviewStatus": "editorial-review-required"
+  },
+  {
+    "id": "lettuce",
+    "publisher": "University of Minnesota Extension",
+    "title": "Growing lettuce",
+    "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-lettuce-endive-and-radicchio",
+    "accessedAt": "2026-10-09",
+    "reviewStatus": "editorial-review-required"
+  },
+  {
+    "id": "marigold",
+    "publisher": "NC State Extension",
+    "title": "Tagetes",
+    "url": "https://plants.ces.ncsu.edu/plants/tagetes/",
+    "accessedAt": "2026-10-09",
+    "reviewStatus": "editorial-review-required"
+  },
+  {
+    "id": "garden",
+    "publisher": "University of Minnesota Extension",
+    "title": "Vegetable growing guides",
+    "url": "https://extension.umn.edu/vegetables",
+    "accessedAt": "2026-10-09",
+    "reviewStatus": "editorial-review-required"
+  }
+]

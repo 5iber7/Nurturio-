@@ -1,0 +1,523 @@
+{
+  "id": "chicken",
+  "name": "Chicken Coop",
+  "subject": "Chicken care",
+  "subtitle": "Happy routines, healthy little neighbors.",
+  "icon": "chicken",
+  "color": "#DB8D67",
+  "goal": "Build a caring daily routine for a small flock.",
+  "sourceIds": [
+    "chickens"
+  ],
+  "glossary": [
+    [
+      "Hen",
+      "An adult female chicken."
+    ],
+    [
+      "Roost",
+      "A perch chickens use for resting."
+    ],
+    [
+      "Brooder",
+      "A protected warm space for chicks."
+    ]
+  ],
+  "quests": [
+    {
+      "id": "chicken-1",
+      "topicId": "chicken",
+      "order": 0,
+      "title": "Meet your flock",
+      "template": "sequence",
+      "instruction": "Arrange the growth stages.",
+      "intro": "Build a caring daily routine for a small flock. In this step: meet your flock.",
+      "fact": "Chickens develop from chicks into young birds and adults.",
+      "explorer": "Chickens develop from chicks into young birds and adults. Lifespan varies by breed, care, and individual; confirm local guidance.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Chick",
+          "target": "1"
+        },
+        {
+          "id": "item-1",
+          "label": "Young bird",
+          "target": "2"
+        },
+        {
+          "id": "item-2",
+          "label": "Adult",
+          "target": "3"
+        }
+      ],
+      "check": {
+        "question": "Do all breeds develop at the same rate?",
+        "answers": [
+          "No",
+          "Yes",
+          "Only indoors"
+        ],
+        "correct": 0,
+        "explanation": "Chickens develop from chicks into young birds and adults."
+      },
+      "prerequisites": [],
+      "sourceIds": [
+        "chickens"
+      ],
+      "safety": "Lifespan varies by breed, care, and individual; confirm local guidance.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "chickens"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "chicken"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "chicken-2",
+      "topicId": "chicken",
+      "order": 1,
+      "title": "Build a safe coop",
+      "template": "build",
+      "instruction": "Place shelter, a perch, and a nest.",
+      "intro": "Build a caring daily routine for a small flock. In this step: build a safe coop.",
+      "fact": "A coop needs shelter, ventilation, and protection.",
+      "explorer": "A coop needs shelter, ventilation, and protection. Check local welfare and space guidance before keeping real chickens.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Shelter",
+          "target": "Coop"
+        },
+        {
+          "id": "item-1",
+          "label": "Perch",
+          "target": "Coop"
+        },
+        {
+          "id": "item-2",
+          "label": "Nest",
+          "target": "Coop"
+        }
+      ],
+      "check": {
+        "question": "What does a coop need?",
+        "answers": [
+          "Ventilation",
+          "No air at all",
+          "Only decoration"
+        ],
+        "correct": 0,
+        "explanation": "A coop needs shelter, ventilation, and protection."
+      },
+      "prerequisites": [
+        "chicken-1"
+      ],
+      "sourceIds": [
+        "chickens"
+      ],
+      "safety": "Check local welfare and space guidance before keeping real chickens.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "chickens"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "chicken"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "chicken-3",
+      "topicId": "chicken",
+      "order": 2,
+      "title": "Choose the right feed",
+      "template": "sort",
+      "instruction": "Choose appropriate feed for the simulated flock.",
+      "intro": "Build a caring daily routine for a small flock. In this step: choose the right feed.",
+      "fact": "Use a balanced feed suited to the birds' age.",
+      "explorer": "Use a balanced feed suited to the birds' age. This lesson does not provide a complete toxic-food list.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Suitable feed",
+          "target": "Keep"
+        },
+        {
+          "id": "item-1",
+          "label": "Spoiled scraps",
+          "target": "Leave"
+        },
+        {
+          "id": "item-2",
+          "label": "Clean feed",
+          "target": "Keep"
+        }
+      ],
+      "check": {
+        "question": "Should scraps replace balanced feed?",
+        "answers": [
+          "No",
+          "Always",
+          "Only for chicks"
+        ],
+        "correct": 0,
+        "explanation": "Use a balanced feed suited to the birds' age."
+      },
+      "prerequisites": [
+        "chicken-2"
+      ],
+      "sourceIds": [
+        "chickens"
+      ],
+      "safety": "This lesson does not provide a complete toxic-food list.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "chickens"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "chicken"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "chicken-4",
+      "topicId": "chicken",
+      "order": 3,
+      "title": "Fresh water",
+      "template": "pour",
+      "instruction": "Fill the drinking station.",
+      "intro": "Build a caring daily routine for a small flock. In this step: fresh water.",
+      "fact": "Provide clean drinking water and keep the station maintained.",
+      "explorer": "Provide clean drinking water and keep the station maintained. Check water more often during hot weather.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Water station",
+          "target": "Fill"
+        }
+      ],
+      "check": {
+        "question": "How should drinking water be available?",
+        "answers": [
+          "Regularly and reliably",
+          "Only on weekends",
+          "Never"
+        ],
+        "correct": 0,
+        "explanation": "Provide clean drinking water and keep the station maintained."
+      },
+      "prerequisites": [
+        "chicken-3"
+      ],
+      "sourceIds": [
+        "chickens"
+      ],
+      "safety": "Check water more often during hot weather.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "chickens"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "chicken"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "chicken-5",
+      "topicId": "chicken",
+      "order": 4,
+      "title": "A clean home",
+      "template": "sort",
+      "instruction": "Put used bedding aside and choose clean bedding.",
+      "intro": "Build a caring daily routine for a small flock. In this step: a clean home.",
+      "fact": "Cleaning supports a healthier living environment.",
+      "explorer": "Cleaning supports a healthier living environment. Wash hands after contact with birds or their environment.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Clean bedding",
+          "target": "Keep"
+        },
+        {
+          "id": "item-1",
+          "label": "Used bedding",
+          "target": "Leave"
+        },
+        {
+          "id": "item-2",
+          "label": "Clean bedding",
+          "target": "Keep"
+        }
+      ],
+      "check": {
+        "question": "What helps keep the coop healthy?",
+        "answers": [
+          "Routine cleaning",
+          "Ignoring damp bedding",
+          "No maintenance"
+        ],
+        "correct": 0,
+        "explanation": "Cleaning supports a healthier living environment."
+      },
+      "prerequisites": [
+        "chicken-4"
+      ],
+      "sourceIds": [
+        "chickens"
+      ],
+      "safety": "Wash hands after contact with birds or their environment.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "chickens"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "chicken"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "chicken-6",
+      "topicId": "chicken",
+      "order": 5,
+      "title": "Time to grow",
+      "template": "match",
+      "instruction": "Match each bird to suitable care.",
+      "intro": "Build a caring daily routine for a small flock. In this step: time to grow.",
+      "fact": "Young chicks need different care from adult hens.",
+      "explorer": "Young chicks need different care from adult hens. Growth is simulated; actual development varies.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Chick",
+          "target": "Brooder care"
+        },
+        {
+          "id": "item-1",
+          "label": "Hen",
+          "target": "Adult care"
+        },
+        {
+          "id": "item-2",
+          "label": "Young bird",
+          "target": "Growth care"
+        }
+      ],
+      "check": {
+        "question": "Which birds need special early care?",
+        "answers": [
+          "Chicks",
+          "Only roosters",
+          "No birds"
+        ],
+        "correct": 0,
+        "explanation": "Young chicks need different care from adult hens."
+      },
+      "prerequisites": [
+        "chicken-5"
+      ],
+      "sourceIds": [
+        "chickens"
+      ],
+      "safety": "Growth is simulated; actual development varies.",
+      "realDuration": {
+        "label": "Varies with species, season, and conditions",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "chickens"
+        ]
+      },
+      "gameDurationSeconds": 10,
+      "gardenPaceSeconds": 3600,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "chicken"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "chicken-7",
+      "topicId": "chicken",
+      "order": 6,
+      "title": "Collect the eggs",
+      "template": "build",
+      "instruction": "Place eggs carefully into the basket.",
+      "intro": "Build a caring daily routine for a small flock. In this step: collect the eggs.",
+      "fact": "Hens can lay eggs without a rooster.",
+      "explorer": "Hens can lay eggs without a rooster. Fertile eggs require a rooster. Follow local food-safety guidance for handling.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Egg",
+          "target": "Basket"
+        },
+        {
+          "id": "item-1",
+          "label": "Egg",
+          "target": "Basket"
+        },
+        {
+          "id": "item-2",
+          "label": "Egg",
+          "target": "Basket"
+        }
+      ],
+      "check": {
+        "question": "Is a rooster required for a hen to lay?",
+        "answers": [
+          "No",
+          "Yes",
+          "Only in winter"
+        ],
+        "correct": 0,
+        "explanation": "Hens can lay eggs without a rooster."
+      },
+      "prerequisites": [
+        "chicken-6"
+      ],
+      "sourceIds": [
+        "chickens"
+      ],
+      "safety": "Fertile eggs require a rooster. Follow local food-safety guidance for handling.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "chickens"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "chicken"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "chicken-8",
+      "topicId": "chicken",
+      "order": 7,
+      "title": "Observe and protect",
+      "template": "sort",
+      "instruction": "Choose good care actions.",
+      "intro": "Build a caring daily routine for a small flock. In this step: observe and protect.",
+      "fact": "Watch behavior and maintain predator protection.",
+      "explorer": "Watch behavior and maintain predator protection. The app cannot diagnose illness or prescribe treatments.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Check water",
+          "target": "Keep"
+        },
+        {
+          "id": "item-1",
+          "label": "Inspect fencing",
+          "target": "Keep"
+        },
+        {
+          "id": "item-2",
+          "label": "Ignore changes",
+          "target": "Leave"
+        }
+      ],
+      "check": {
+        "question": "What if a real bird seems ill?",
+        "answers": [
+          "Consult a qualified professional",
+          "Ask a game for medication",
+          "Ignore it"
+        ],
+        "correct": 0,
+        "explanation": "Watch behavior and maintain predator protection."
+      },
+      "prerequisites": [
+        "chicken-7"
+      ],
+      "sourceIds": [
+        "chickens"
+      ],
+      "safety": "The app cannot diagnose illness or prescribe treatments.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "chickens"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "chicken"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    }
+  ],
+  "schemaVersion": 1,
+  "contentVersion": "1.0.0",
+  "reviewStatus": "expert-review-required"
+}

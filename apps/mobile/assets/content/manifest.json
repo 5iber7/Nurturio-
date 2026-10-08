@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "1.0.0",
+  "topics": [
+    "honey",
+    "olive",
+    "chicken",
+    "garden"
+  ],
+  "plants": "plants.json",
+  "sources": "sources.json"
+}

@@ -1,0 +1,608 @@
+{
+  "id": "garden",
+  "name": "The Garden",
+  "subject": "Plants & flowers",
+  "subtitle": "Small seeds. Wonderful possibilities.",
+  "icon": "flower",
+  "color": "#8BAE84",
+  "goal": "Grow plants by understanding their needs and stages.",
+  "sourceIds": [
+    "garden",
+    "tomato",
+    "herbs",
+    "strawberry",
+    "lettuce",
+    "marigold"
+  ],
+  "glossary": [
+    [
+      "Germination",
+      "A seed starting to grow."
+    ],
+    [
+      "Transplant",
+      "A young plant moved into a growing space."
+    ],
+    [
+      "Mulch",
+      "Material placed on soil to help manage moisture and weeds."
+    ]
+  ],
+  "quests": [
+    {
+      "id": "garden-1",
+      "topicId": "garden",
+      "order": 0,
+      "title": "Choose what to grow",
+      "template": "match",
+      "instruction": "Match each plant to its harvest or bloom.",
+      "intro": "Grow plants by understanding their needs and stages. In this step: choose what to grow.",
+      "fact": "Choose a plant suited to your space and climate.",
+      "explorer": "Choose a plant suited to your space and climate. Advice in the library describes common conditions; local seasons differ.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Tomato",
+          "target": "Fruit"
+        },
+        {
+          "id": "item-1",
+          "label": "Basil",
+          "target": "Leaves"
+        },
+        {
+          "id": "item-2",
+          "label": "Sunflower",
+          "target": "Flower"
+        }
+      ],
+      "check": {
+        "question": "What should guide plant choice?",
+        "answers": [
+          "Space and local climate",
+          "Only a picture",
+          "A fixed global calendar"
+        ],
+        "correct": 0,
+        "explanation": "Choose a plant suited to your space and climate."
+      },
+      "prerequisites": [],
+      "sourceIds": [
+        "garden",
+        "tomato",
+        "herbs",
+        "strawberry",
+        "lettuce",
+        "marigold"
+      ],
+      "safety": "Advice in the library describes common conditions; local seasons differ.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "garden",
+          "tomato",
+          "herbs",
+          "strawberry",
+          "lettuce",
+          "marigold"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "flower"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "garden-2",
+      "topicId": "garden",
+      "order": 1,
+      "title": "A place in the sun",
+      "template": "build",
+      "instruction": "Prepare a bed with soil, light, and drainage.",
+      "intro": "Grow plants by understanding their needs and stages. In this step: a place in the sun.",
+      "fact": "Healthy growing conditions start with the site.",
+      "explorer": "Healthy growing conditions start with the site. Plant needs vary; use the selected plant profile.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Soil",
+          "target": "Bed"
+        },
+        {
+          "id": "item-1",
+          "label": "Sunlight",
+          "target": "Bed"
+        },
+        {
+          "id": "item-2",
+          "label": "Drainage",
+          "target": "Bed"
+        }
+      ],
+      "check": {
+        "question": "Why consider drainage?",
+        "answers": [
+          "Roots need suitable conditions",
+          "Plants never need water",
+          "Soil must stay flooded"
+        ],
+        "correct": 0,
+        "explanation": "Healthy growing conditions start with the site."
+      },
+      "prerequisites": [
+        "garden-1"
+      ],
+      "sourceIds": [
+        "garden",
+        "tomato",
+        "herbs",
+        "strawberry",
+        "lettuce",
+        "marigold"
+      ],
+      "safety": "Plant needs vary; use the selected plant profile.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "garden",
+          "tomato",
+          "herbs",
+          "strawberry",
+          "lettuce",
+          "marigold"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "flower"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "garden-3",
+      "topicId": "garden",
+      "order": 2,
+      "title": "Sow or transplant",
+      "template": "sequence",
+      "instruction": "Follow the planting sequence.",
+      "intro": "Grow plants by understanding their needs and stages. In this step: sow or transplant.",
+      "fact": "Some crops are sown directly; others often start as transplants.",
+      "explorer": "Some crops are sown directly; others often start as transplants. Seed depth and spacing depend on the crop and variety.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Prepare",
+          "target": "1"
+        },
+        {
+          "id": "item-1",
+          "label": "Plant",
+          "target": "2"
+        },
+        {
+          "id": "item-2",
+          "label": "Water gently",
+          "target": "3"
+        }
+      ],
+      "check": {
+        "question": "Are strawberries commonly grown only from seed?",
+        "answers": [
+          "No, transplants are common",
+          "Yes, always",
+          "They have no seeds"
+        ],
+        "correct": 0,
+        "explanation": "Some crops are sown directly; others often start as transplants."
+      },
+      "prerequisites": [
+        "garden-2"
+      ],
+      "sourceIds": [
+        "garden",
+        "tomato",
+        "herbs",
+        "strawberry",
+        "lettuce",
+        "marigold"
+      ],
+      "safety": "Seed depth and spacing depend on the crop and variety.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "garden",
+          "tomato",
+          "herbs",
+          "strawberry",
+          "lettuce",
+          "marigold"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "flower"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "garden-4",
+      "topicId": "garden",
+      "order": 3,
+      "title": "Water thoughtfully",
+      "template": "pour",
+      "instruction": "Water the bed gently.",
+      "intro": "Grow plants by understanding their needs and stages. In this step: water thoughtfully.",
+      "fact": "Check the soil and plant instead of following one universal watering rule.",
+      "explorer": "Check the soil and plant instead of following one universal watering rule. Avoid treating this simulation as an irrigation prescription.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Garden bed",
+          "target": "Fill"
+        }
+      ],
+      "check": {
+        "question": "What should guide watering?",
+        "answers": [
+          "Soil and plant needs",
+          "Always the same amount",
+          "Flower color alone"
+        ],
+        "correct": 0,
+        "explanation": "Check the soil and plant instead of following one universal watering rule."
+      },
+      "prerequisites": [
+        "garden-3"
+      ],
+      "sourceIds": [
+        "garden",
+        "tomato",
+        "herbs",
+        "strawberry",
+        "lettuce",
+        "marigold"
+      ],
+      "safety": "Avoid treating this simulation as an irrigation prescription.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "garden",
+          "tomato",
+          "herbs",
+          "strawberry",
+          "lettuce",
+          "marigold"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "flower"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "garden-5",
+      "topicId": "garden",
+      "order": 4,
+      "title": "The first sprout",
+      "template": "sequence",
+      "instruction": "Watch a seed become a seedling.",
+      "intro": "Grow plants by understanding their needs and stages. In this step: the first sprout.",
+      "fact": "Germination needs suitable moisture and temperature.",
+      "explorer": "Germination needs suitable moisture and temperature. Timing varies by species, variety, and conditions.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Seed",
+          "target": "1"
+        },
+        {
+          "id": "item-1",
+          "label": "Root",
+          "target": "2"
+        },
+        {
+          "id": "item-2",
+          "label": "Seedling",
+          "target": "3"
+        }
+      ],
+      "check": {
+        "question": "Do all seeds sprout at the same speed?",
+        "answers": [
+          "No",
+          "Yes",
+          "Only in pots"
+        ],
+        "correct": 0,
+        "explanation": "Germination needs suitable moisture and temperature."
+      },
+      "prerequisites": [
+        "garden-4"
+      ],
+      "sourceIds": [
+        "garden",
+        "tomato",
+        "herbs",
+        "strawberry",
+        "lettuce",
+        "marigold"
+      ],
+      "safety": "Timing varies by species, variety, and conditions.",
+      "realDuration": {
+        "label": "Varies with species, season, and conditions",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "garden",
+          "tomato",
+          "herbs",
+          "strawberry",
+          "lettuce",
+          "marigold"
+        ]
+      },
+      "gameDurationSeconds": 10,
+      "gardenPaceSeconds": 3600,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "flower"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "garden-6",
+      "topicId": "garden",
+      "order": 5,
+      "title": "Support new growth",
+      "template": "build",
+      "instruction": "Place support and space around the growing plant.",
+      "intro": "Grow plants by understanding their needs and stages. In this step: support new growth.",
+      "fact": "Some plants, such as many tomato varieties, benefit from support.",
+      "explorer": "Some plants, such as many tomato varieties, benefit from support. Choose care for the selected plant, not every plant identically.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Support",
+          "target": "Bed"
+        },
+        {
+          "id": "item-1",
+          "label": "Space",
+          "target": "Bed"
+        },
+        {
+          "id": "item-2",
+          "label": "Mulch",
+          "target": "Bed"
+        }
+      ],
+      "check": {
+        "question": "Do all plants need a tall support?",
+        "answers": [
+          "No",
+          "Yes",
+          "Only flowers"
+        ],
+        "correct": 0,
+        "explanation": "Some plants, such as many tomato varieties, benefit from support."
+      },
+      "prerequisites": [
+        "garden-5"
+      ],
+      "sourceIds": [
+        "garden",
+        "tomato",
+        "herbs",
+        "strawberry",
+        "lettuce",
+        "marigold"
+      ],
+      "safety": "Choose care for the selected plant, not every plant identically.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "garden",
+          "tomato",
+          "herbs",
+          "strawberry",
+          "lettuce",
+          "marigold"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "flower"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "garden-7",
+      "topicId": "garden",
+      "order": 6,
+      "title": "Look before you act",
+      "template": "sort",
+      "instruction": "Choose gentle care and observation.",
+      "intro": "Grow plants by understanding their needs and stages. In this step: look before you act.",
+      "fact": "Inspect plants and identify the issue before acting.",
+      "explorer": "Inspect plants and identify the issue before acting. Ask an adult or expert about real pests and any treatment.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Observe leaves",
+          "target": "Keep"
+        },
+        {
+          "id": "item-1",
+          "label": "Hand weed carefully",
+          "target": "Keep"
+        },
+        {
+          "id": "item-2",
+          "label": "Unknown chemical",
+          "target": "Leave"
+        }
+      ],
+      "check": {
+        "question": "What comes before choosing a pest treatment?",
+        "answers": [
+          "Identify the issue",
+          "Spray anything",
+          "Ignore instructions"
+        ],
+        "correct": 0,
+        "explanation": "Inspect plants and identify the issue before acting."
+      },
+      "prerequisites": [
+        "garden-6"
+      ],
+      "sourceIds": [
+        "garden",
+        "tomato",
+        "herbs",
+        "strawberry",
+        "lettuce",
+        "marigold"
+      ],
+      "safety": "Ask an adult or expert about real pests and any treatment.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "garden",
+          "tomato",
+          "herbs",
+          "strawberry",
+          "lettuce",
+          "marigold"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "flower"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "garden-8",
+      "topicId": "garden",
+      "order": 7,
+      "title": "Harvest or enjoy",
+      "template": "match",
+      "instruction": "Match harvests and flowers to their plants.",
+      "intro": "Grow plants by understanding their needs and stages. In this step: harvest or enjoy.",
+      "fact": "Harvest indicators differ between crops.",
+      "explorer": "Harvest indicators differ between crops. Seed saving depends on the crop, variety, and pollination.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Carrot",
+          "target": "Root"
+        },
+        {
+          "id": "item-1",
+          "label": "Lettuce",
+          "target": "Leaves"
+        },
+        {
+          "id": "item-2",
+          "label": "Marigold",
+          "target": "Bloom"
+        }
+      ],
+      "check": {
+        "question": "Should all crops be harvested the same way?",
+        "answers": [
+          "No",
+          "Yes",
+          "Only at night"
+        ],
+        "correct": 0,
+        "explanation": "Harvest indicators differ between crops."
+      },
+      "prerequisites": [
+        "garden-7"
+      ],
+      "sourceIds": [
+        "garden",
+        "tomato",
+        "herbs",
+        "strawberry",
+        "lettuce",
+        "marigold"
+      ],
+      "safety": "Seed saving depends on the crop, variety, and pollination.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "garden",
+          "tomato",
+          "herbs",
+          "strawberry",
+          "lettuce",
+          "marigold"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "flower"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    }
+  ],
+  "schemaVersion": 1,
+  "contentVersion": "1.0.0",
+  "reviewStatus": "expert-review-required"
+}

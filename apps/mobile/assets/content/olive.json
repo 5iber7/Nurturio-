@@ -1,0 +1,530 @@
+{
+  "id": "olive",
+  "name": "Olive Grove",
+  "subject": "Olive oil",
+  "subtitle": "From the branch to the bottle.",
+  "icon": "olive",
+  "color": "#7E9C59",
+  "goal": "Discover how olives become oil through mechanical processing.",
+  "sourceIds": [
+    "oil",
+    "oil-quality"
+  ],
+  "glossary": [
+    [
+      "Malaxation",
+      "Slow mixing of olive paste."
+    ],
+    [
+      "Pomace",
+      "Solids remaining after oil separation."
+    ],
+    [
+      "Centrifuge",
+      "A machine that separates materials by spinning."
+    ]
+  ],
+  "quests": [
+    {
+      "id": "olive-1",
+      "topicId": "olive",
+      "order": 0,
+      "title": "Know your tree",
+      "template": "match",
+      "instruction": "Match tree, fruit, and product.",
+      "intro": "Discover how olives become oil through mechanical processing. In this step: know your tree.",
+      "fact": "Olive oil begins with fruit grown on olive trees.",
+      "explorer": "Olive oil begins with fruit grown on olive trees. Climate and variety shape the harvest season.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Tree",
+          "target": "Olive tree"
+        },
+        {
+          "id": "item-1",
+          "label": "Fruit",
+          "target": "Olive"
+        },
+        {
+          "id": "item-2",
+          "label": "Product",
+          "target": "Oil"
+        }
+      ],
+      "check": {
+        "question": "Which part is processed for oil?",
+        "answers": [
+          "The fruit",
+          "The trunk",
+          "The roots"
+        ],
+        "correct": 0,
+        "explanation": "Olive oil begins with fruit grown on olive trees."
+      },
+      "prerequisites": [],
+      "sourceIds": [
+        "oil",
+        "oil-quality"
+      ],
+      "safety": "Climate and variety shape the harvest season.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "oil",
+          "oil-quality"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "olive"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "olive-2",
+      "topicId": "olive",
+      "order": 1,
+      "title": "Harvest with care",
+      "template": "sort",
+      "instruction": "Collect sound olives and set damaged fruit aside.",
+      "intro": "Discover how olives become oil through mechanical processing. In this step: harvest with care.",
+      "fact": "Fruit quality and timely processing matter.",
+      "explorer": "Fruit quality and timely processing matter. Color alone does not certify quality.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Sound olive",
+          "target": "Keep"
+        },
+        {
+          "id": "item-1",
+          "label": "Damaged olive",
+          "target": "Leave"
+        },
+        {
+          "id": "item-2",
+          "label": "Sound olive",
+          "target": "Keep"
+        }
+      ],
+      "check": {
+        "question": "Which fruit is the better starting point?",
+        "answers": [
+          "Sound olives",
+          "Spoiled olives",
+          "Leaves alone"
+        ],
+        "correct": 0,
+        "explanation": "Fruit quality and timely processing matter."
+      },
+      "prerequisites": [
+        "olive-1"
+      ],
+      "sourceIds": [
+        "oil",
+        "oil-quality"
+      ],
+      "safety": "Color alone does not certify quality.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "oil",
+          "oil-quality"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "olive"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "olive-3",
+      "topicId": "olive",
+      "order": 2,
+      "title": "Sort and clean",
+      "template": "sort",
+      "instruction": "Remove leaves and stones from the fruit.",
+      "intro": "Discover how olives become oil through mechanical processing. In this step: sort and clean.",
+      "fact": "Processing lines remove foreign material; washing is used where appropriate.",
+      "explorer": "Processing lines remove foreign material; washing is used where appropriate. Real facilities adjust cleaning to the fruit and equipment.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Olive",
+          "target": "Keep"
+        },
+        {
+          "id": "item-1",
+          "label": "Leaf",
+          "target": "Leave"
+        },
+        {
+          "id": "item-2",
+          "label": "Stone",
+          "target": "Leave"
+        }
+      ],
+      "check": {
+        "question": "What should be removed before crushing?",
+        "answers": [
+          "Stones and leaves",
+          "All fruit",
+          "The oil bottle"
+        ],
+        "correct": 0,
+        "explanation": "Processing lines remove foreign material; washing is used where appropriate."
+      },
+      "prerequisites": [
+        "olive-2"
+      ],
+      "sourceIds": [
+        "oil",
+        "oil-quality"
+      ],
+      "safety": "Real facilities adjust cleaning to the fruit and equipment.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "oil",
+          "oil-quality"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "olive"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "olive-4",
+      "topicId": "olive",
+      "order": 3,
+      "title": "Crush into paste",
+      "template": "timing",
+      "instruction": "Run the simulated crusher at a steady rhythm.",
+      "intro": "Discover how olives become oil through mechanical processing. In this step: crush into paste.",
+      "fact": "Crushing opens the fruit cells and creates olive paste.",
+      "explorer": "Crushing opens the fruit cells and creates olive paste. Industrial machinery requires trained operators.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Crusher",
+          "target": "Crush"
+        }
+      ],
+      "check": {
+        "question": "What does crushing produce?",
+        "answers": [
+          "Olive paste",
+          "Bread dough",
+          "Finished bottled oil"
+        ],
+        "correct": 0,
+        "explanation": "Crushing opens the fruit cells and creates olive paste."
+      },
+      "prerequisites": [
+        "olive-3"
+      ],
+      "sourceIds": [
+        "oil",
+        "oil-quality"
+      ],
+      "safety": "Industrial machinery requires trained operators.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "oil",
+          "oil-quality"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "olive"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "olive-5",
+      "topicId": "olive",
+      "order": 4,
+      "title": "Slowly mix",
+      "template": "timing",
+      "instruction": "Mix the paste in the malaxer.",
+      "intro": "Discover how olives become oil through mechanical processing. In this step: slowly mix.",
+      "fact": "Slow mixing helps prepare the paste for oil separation.",
+      "explorer": "Slow mixing helps prepare the paste for oil separation. Actual mixing settings depend on the fruit and equipment.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Malaxer",
+          "target": "Mix"
+        }
+      ],
+      "check": {
+        "question": "What is malaxation?",
+        "answers": [
+          "Slow mixing",
+          "Growing a tree",
+          "Painting a bottle"
+        ],
+        "correct": 0,
+        "explanation": "Slow mixing helps prepare the paste for oil separation."
+      },
+      "prerequisites": [
+        "olive-4"
+      ],
+      "sourceIds": [
+        "oil",
+        "oil-quality"
+      ],
+      "safety": "Actual mixing settings depend on the fruit and equipment.",
+      "realDuration": {
+        "label": "Varies with species, season, and conditions",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "oil",
+          "oil-quality"
+        ]
+      },
+      "gameDurationSeconds": 8,
+      "gardenPaceSeconds": 3600,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "olive"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "olive-6",
+      "topicId": "olive",
+      "order": 5,
+      "title": "Separate the oil",
+      "template": "sequence",
+      "instruction": "Follow this modern processing line.",
+      "intro": "Discover how olives become oil through mechanical processing. In this step: separate the oil.",
+      "fact": "Modern processing commonly uses centrifugal separation.",
+      "explorer": "Modern processing commonly uses centrifugal separation. Traditional presses and modern centrifuges are different methods.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Paste",
+          "target": "1"
+        },
+        {
+          "id": "item-1",
+          "label": "Decanter",
+          "target": "2"
+        },
+        {
+          "id": "item-2",
+          "label": "Separated oil",
+          "target": "3"
+        }
+      ],
+      "check": {
+        "question": "How does a centrifuge work?",
+        "answers": [
+          "By spinning",
+          "By planting",
+          "By adding leaves"
+        ],
+        "correct": 0,
+        "explanation": "Modern processing commonly uses centrifugal separation."
+      },
+      "prerequisites": [
+        "olive-5"
+      ],
+      "sourceIds": [
+        "oil",
+        "oil-quality"
+      ],
+      "safety": "Traditional presses and modern centrifuges are different methods.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "oil",
+          "oil-quality"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "olive"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "olive-7",
+      "topicId": "olive",
+      "order": 6,
+      "title": "Clarify the oil",
+      "template": "sort",
+      "instruction": "Keep oil and remove remaining sediment.",
+      "intro": "Discover how olives become oil through mechanical processing. In this step: clarify the oil.",
+      "fact": "Oil can be clarified by filtration, settling, or related methods.",
+      "explorer": "Oil can be clarified by filtration, settling, or related methods. Oil grading requires defined quality checks, not a game score.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Oil",
+          "target": "Keep"
+        },
+        {
+          "id": "item-1",
+          "label": "Sediment",
+          "target": "Leave"
+        },
+        {
+          "id": "item-2",
+          "label": "Oil",
+          "target": "Keep"
+        }
+      ],
+      "check": {
+        "question": "What is clarification for?",
+        "answers": [
+          "Removing remaining material",
+          "Adding stones",
+          "Changing the tree"
+        ],
+        "correct": 0,
+        "explanation": "Oil can be clarified by filtration, settling, or related methods."
+      },
+      "prerequisites": [
+        "olive-6"
+      ],
+      "sourceIds": [
+        "oil",
+        "oil-quality"
+      ],
+      "safety": "Oil grading requires defined quality checks, not a game score.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "oil",
+          "oil-quality"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "olive"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "olive-8",
+      "topicId": "olive",
+      "order": 7,
+      "title": "Bottle and protect",
+      "template": "build",
+      "instruction": "Place a cap and a label on the bottle.",
+      "intro": "Discover how olives become oil through mechanical processing. In this step: bottle and protect.",
+      "fact": "Packaging and storage help protect olive oil quality.",
+      "explorer": "Packaging and storage help protect olive oil quality. Extra-virgin is a quality category, not a particular color.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Cap",
+          "target": "Bottle"
+        },
+        {
+          "id": "item-1",
+          "label": "Label",
+          "target": "Bottle"
+        },
+        {
+          "id": "item-2",
+          "label": "Bottle",
+          "target": "Shelf"
+        }
+      ],
+      "check": {
+        "question": "What should oil be protected from?",
+        "answers": [
+          "Excess heat and light",
+          "Its own label",
+          "A closed bottle"
+        ],
+        "correct": 0,
+        "explanation": "Packaging and storage help protect olive oil quality."
+      },
+      "prerequisites": [
+        "olive-7"
+      ],
+      "sourceIds": [
+        "oil",
+        "oil-quality"
+      ],
+      "safety": "Extra-virgin is a quality category, not a particular color.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "oil",
+          "oil-quality"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "olive"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    }
+  ],
+  "schemaVersion": 1,
+  "contentVersion": "1.0.0",
+  "reviewStatus": "expert-review-required"
+}
