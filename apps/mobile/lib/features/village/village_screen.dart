@@ -139,66 +139,78 @@ class VillageScreen extends ConsumerWidget {
                   SizedBox(
                     width:
                         (constraints.maxWidth - (columns - 1) * 18) / columns,
-                    child: Material(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(24),
-                      clipBehavior: Clip.antiAlias,
-                      child: InkWell(
-                        onTap: () => context.push('/topic/${topic.id}'),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Container(
-                              color: Color(topic.color).withValues(alpha: .14),
-                              child: WorldArt(
-                                world: topic.id,
-                                height: 175,
-                                progress:
-                                    c.topicCount(topic) / topic.quests.length,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
+                    child: Semantics(
+                      button: true,
+                      label:
+                          '${topic.name}. ${topic.subtitle}. '
+                          '${c.topicCount(topic)} of ${topic.quests.length} discoveries',
+                      onTap: () => context.push('/topic/${topic.id}'),
+                      child: ExcludeSemantics(
+                        child: Material(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(24),
+                          clipBehavior: Clip.antiAlias,
+                          child: InkWell(
+                            onTap: () => context.push('/topic/${topic.id}'),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Container(
+                                  color: Color(topic.color)
+                                      .withValues(alpha: .14),
+                                  child: WorldArt(
+                                    world: topic.id,
+                                    height: 175,
+                                    progress:
+                                        c.topicCount(topic) /
+                                        topic.quests.length,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(20),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Expanded(
-                                        child: Text(
-                                          topic.name,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleLarge,
-                                        ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              topic.name,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleLarge,
+                                            ),
+                                          ),
+                                          const Icon(
+                                            Icons.arrow_outward,
+                                            color: olive,
+                                          ),
+                                        ],
                                       ),
-                                      const Icon(
-                                        Icons.arrow_outward,
-                                        color: olive,
+                                      const SizedBox(height: 6),
+                                      Text(topic.subtitle),
+                                      const SizedBox(height: 14),
+                                      LinearProgressIndicator(
+                                        value:
+                                            c.topicCount(topic) /
+                                            topic.quests.length,
+                                        minHeight: 6,
+                                        borderRadius: BorderRadius.circular(6),
+                                        color: Color(topic.color),
+                                        backgroundColor: cream,
+                                      ),
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        '${c.topicCount(topic)} of ${topic.quests.length} discoveries',
+                                        style: const TextStyle(fontSize: 12),
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(height: 6),
-                                  Text(topic.subtitle),
-                                  const SizedBox(height: 14),
-                                  LinearProgressIndicator(
-                                    value:
-                                        c.topicCount(topic) /
-                                        topic.quests.length,
-                                    minHeight: 6,
-                                    borderRadius: BorderRadius.circular(6),
-                                    color: Color(topic.color),
-                                    backgroundColor: cream,
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    '${c.topicCount(topic)} of ${topic.quests.length} discoveries',
-                                    style: const TextStyle(fontSize: 12),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
                     ),
