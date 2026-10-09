@@ -1,0 +1,520 @@
+{
+  "id": "honey",
+  "name": "The Apiary",
+  "subject": "Honey",
+  "subtitle": "A little flower. A golden discovery.",
+  "icon": "bee",
+  "color": "#EDAE45",
+  "goal": "Care for a colony and follow nectar to the jar.",
+  "sourceIds": [
+    "bees",
+    "bee-seasons"
+  ],
+  "glossary": [
+    [
+      "Nectar",
+      "A sweet liquid made by flowers."
+    ],
+    [
+      "Frame",
+      "A removable support for honeycomb."
+    ],
+    [
+      "Capped honey",
+      "Honey sealed into cells with wax."
+    ]
+  ],
+  "quests": [
+    {
+      "id": "honey-1",
+      "topicId": "honey",
+      "order": 0,
+      "title": "Meet the colony",
+      "template": "match",
+      "instruction": "Match the bee to her role.",
+      "intro": "Care for a colony and follow nectar to the jar. In this step: meet the colony.",
+      "fact": "Workers gather nectar. The queen lays eggs. Drones are male bees.",
+      "explorer": "Workers gather nectar. The queen lays eggs. Drones are male bees. The colony works together.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "queen",
+          "target": "Egg laying"
+        },
+        {
+          "id": "item-1",
+          "label": "worker",
+          "target": "Nectar gathering"
+        },
+        {
+          "id": "item-2",
+          "label": "drone",
+          "target": "Male bee"
+        }
+      ],
+      "check": {
+        "question": "Who gathers nectar?",
+        "answers": [
+          "Workers",
+          "The beekeeper",
+          "Only the queen"
+        ],
+        "correct": 0,
+        "explanation": "Workers gather nectar. The queen lays eggs. Drones are male bees."
+      },
+      "prerequisites": [],
+      "sourceIds": [
+        "bees",
+        "bee-seasons"
+      ],
+      "safety": "The colony works together.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "bees",
+          "bee-seasons"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "bee"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "honey-2",
+      "topicId": "honey",
+      "order": 1,
+      "title": "A home for bees",
+      "template": "build",
+      "instruction": "Place frames inside the hive.",
+      "intro": "Care for a colony and follow nectar to the jar. In this step: a home for bees.",
+      "fact": "Frames hold comb where bees rear young and store food.",
+      "explorer": "Frames hold comb where bees rear young and store food. Frames are supports, not boxes of instant honey.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Frame",
+          "target": "Hive"
+        },
+        {
+          "id": "item-1",
+          "label": "Frame",
+          "target": "Hive"
+        },
+        {
+          "id": "item-2",
+          "label": "Frame",
+          "target": "Hive"
+        }
+      ],
+      "check": {
+        "question": "What do frames support?",
+        "answers": [
+          "Honeycomb",
+          "Flower roots",
+          "Olive paste"
+        ],
+        "correct": 0,
+        "explanation": "Frames hold comb where bees rear young and store food."
+      },
+      "prerequisites": [
+        "honey-1"
+      ],
+      "sourceIds": [
+        "bees",
+        "bee-seasons"
+      ],
+      "safety": "Frames are supports, not boxes of instant honey.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "bees",
+          "bee-seasons"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "bee"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "honey-3",
+      "topicId": "honey",
+      "order": 2,
+      "title": "Ready for a visit",
+      "template": "sort",
+      "instruction": "Choose protective equipment for a supervised hive visit.",
+      "intro": "Care for a colony and follow nectar to the jar. In this step: ready for a visit.",
+      "fact": "Beekeeping needs training and protective equipment.",
+      "explorer": "Beekeeping needs training and protective equipment. Never approach an unfamiliar hive. Bee stings can cause serious reactions.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Veil",
+          "target": "Keep"
+        },
+        {
+          "id": "item-1",
+          "label": "Gloves",
+          "target": "Keep"
+        },
+        {
+          "id": "item-2",
+          "label": "Bare hands",
+          "target": "Leave"
+        }
+      ],
+      "check": {
+        "question": "Who should guide a real hive visit?",
+        "answers": [
+          "An experienced beekeeper",
+          "An app alone",
+          "No one"
+        ],
+        "correct": 0,
+        "explanation": "Beekeeping needs training and protective equipment."
+      },
+      "prerequisites": [
+        "honey-2"
+      ],
+      "sourceIds": [
+        "bees",
+        "bee-seasons"
+      ],
+      "safety": "Never approach an unfamiliar hive. Bee stings can cause serious reactions.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "bees",
+          "bee-seasons"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "bee"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "honey-4",
+      "topicId": "honey",
+      "order": 3,
+      "title": "From flower to hive",
+      "template": "sequence",
+      "instruction": "Follow the journey of nectar.",
+      "intro": "Care for a colony and follow nectar to the jar. In this step: from flower to hive.",
+      "fact": "Workers collect nectar and bring it back to the colony.",
+      "explorer": "Workers collect nectar and bring it back to the colony. Weather and available flowers affect nectar gathering.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Flower",
+          "target": "1"
+        },
+        {
+          "id": "item-1",
+          "label": "Forager",
+          "target": "2"
+        },
+        {
+          "id": "item-2",
+          "label": "Hive",
+          "target": "3"
+        }
+      ],
+      "check": {
+        "question": "Where does nectar begin?",
+        "answers": [
+          "Flowers",
+          "Glass jars",
+          "Soil bags"
+        ],
+        "correct": 0,
+        "explanation": "Workers collect nectar and bring it back to the colony."
+      },
+      "prerequisites": [
+        "honey-3"
+      ],
+      "sourceIds": [
+        "bees",
+        "bee-seasons"
+      ],
+      "safety": "Weather and available flowers affect nectar gathering.",
+      "realDuration": {
+        "label": "Varies with species, season, and conditions",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "bees",
+          "bee-seasons"
+        ]
+      },
+      "gameDurationSeconds": 8,
+      "gardenPaceSeconds": 3600,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "bee"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "honey-5",
+      "topicId": "honey",
+      "order": 4,
+      "title": "Ripen and cap",
+      "template": "pour",
+      "instruction": "Help the colony fill cells in this simulation.",
+      "intro": "Care for a colony and follow nectar to the jar. In this step: ripen and cap.",
+      "fact": "Bees process nectar and reduce its water content before sealing ripe honey.",
+      "explorer": "Bees process nectar and reduce its water content before sealing ripe honey. Ripening depends on the colony and weather; there is no universal fixed wait.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Honey cell",
+          "target": "Fill"
+        }
+      ],
+      "check": {
+        "question": "Does nectar become finished honey instantly?",
+        "answers": [
+          "No, processing takes time",
+          "Yes",
+          "Only in a jar"
+        ],
+        "correct": 0,
+        "explanation": "Bees process nectar and reduce its water content before sealing ripe honey."
+      },
+      "prerequisites": [
+        "honey-4"
+      ],
+      "sourceIds": [
+        "bees",
+        "bee-seasons"
+      ],
+      "safety": "Ripening depends on the colony and weather; there is no universal fixed wait.",
+      "realDuration": {
+        "label": "Varies with species, season, and conditions",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "bees",
+          "bee-seasons"
+        ]
+      },
+      "gameDurationSeconds": 10,
+      "gardenPaceSeconds": 3600,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "bee"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "honey-6",
+      "topicId": "honey",
+      "order": 5,
+      "title": "Leave enough stores",
+      "template": "sort",
+      "instruction": "Choose only surplus frames for the harvest.",
+      "intro": "Care for a colony and follow nectar to the jar. In this step: leave enough stores.",
+      "fact": "The colony needs food reserves; harvest decisions must protect those stores.",
+      "explorer": "The colony needs food reserves; harvest decisions must protect those stores. A real beekeeper assesses colony condition before harvesting.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Surplus frame",
+          "target": "Harvest"
+        },
+        {
+          "id": "item-1",
+          "label": "Food reserve",
+          "target": "Leave"
+        },
+        {
+          "id": "item-2",
+          "label": "Brood frame",
+          "target": "Leave"
+        }
+      ],
+      "check": {
+        "question": "Why leave honey in the hive?",
+        "answers": [
+          "Bees need food",
+          "It makes jars heavier",
+          "It stops flowers growing"
+        ],
+        "correct": 0,
+        "explanation": "The colony needs food reserves; harvest decisions must protect those stores."
+      },
+      "prerequisites": [
+        "honey-5"
+      ],
+      "sourceIds": [
+        "bees",
+        "bee-seasons"
+      ],
+      "safety": "A real beekeeper assesses colony condition before harvesting.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "bees",
+          "bee-seasons"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "bee"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "honey-7",
+      "topicId": "honey",
+      "order": 6,
+      "title": "Uncap and extract",
+      "template": "timing",
+      "instruction": "Turn the extractor gently after the caps are removed.",
+      "intro": "Care for a colony and follow nectar to the jar. In this step: uncap and extract.",
+      "fact": "An extractor spins prepared frames so honey leaves the comb.",
+      "explorer": "An extractor spins prepared frames so honey leaves the comb. Extraction equipment is operated with suitable training.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Extractor",
+          "target": "Spin"
+        }
+      ],
+      "check": {
+        "question": "What comes before extraction?",
+        "answers": [
+          "Remove wax caps",
+          "Bottle the oil",
+          "Plant seeds"
+        ],
+        "correct": 0,
+        "explanation": "An extractor spins prepared frames so honey leaves the comb."
+      },
+      "prerequisites": [
+        "honey-6"
+      ],
+      "sourceIds": [
+        "bees",
+        "bee-seasons"
+      ],
+      "safety": "Extraction equipment is operated with suitable training.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "bees",
+          "bee-seasons"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "bee"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    },
+    {
+      "id": "honey-8",
+      "topicId": "honey",
+      "order": 7,
+      "title": "Filter, jar, celebrate",
+      "template": "pour",
+      "instruction": "Fill clean jars with your simulated honey.",
+      "intro": "Care for a colony and follow nectar to the jar. In this step: filter, jar, celebrate.",
+      "fact": "Filtering removes wax particles before honey is packaged.",
+      "explorer": "Filtering removes wax particles before honey is packaged. This simulation is an overview, not a food-production safety certificate.",
+      "items": [
+        {
+          "id": "item-0",
+          "label": "Honey jar",
+          "target": "Fill"
+        }
+      ],
+      "check": {
+        "question": "What belongs in a honey jar?",
+        "answers": [
+          "Prepared honey",
+          "Loose wax pieces",
+          "Coop bedding"
+        ],
+        "correct": 0,
+        "explanation": "Filtering removes wax particles before honey is packaged."
+      },
+      "prerequisites": [
+        "honey-7"
+      ],
+      "sourceIds": [
+        "bees",
+        "bee-seasons"
+      ],
+      "safety": "This simulation is an overview, not a food-production safety certificate.",
+      "realDuration": {
+        "label": "Depends on the task and equipment",
+        "conditions": "This is an educational simulation, not a fixed biological timetable.",
+        "sourceIds": [
+          "bees",
+          "bee-seasons"
+        ]
+      },
+      "gameDurationSeconds": 0,
+      "gardenPaceSeconds": 0,
+      "reward": {
+        "xp": 30,
+        "coins": 10
+      },
+      "videoUrl": null,
+      "assetRefs": [
+        "bee"
+      ],
+      "accessibilityAlternative": "Use the labeled controls below the scene."
+    }
+  ],
+  "schemaVersion": 1,
+  "contentVersion": "1.0.0",
+  "reviewStatus": "expert-review-required"
+}

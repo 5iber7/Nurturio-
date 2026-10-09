@@ -1,0 +1,104 @@
+name: Nurturio checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: nurturio-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  mobile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        with:
+          flutter-version: '3.47.6'
+          cache: true
+      - run: node scripts/validate-content.mjs
+      - run: npm ci && npm run validate:models
+      - run: node scripts/secret-scan.mjs
+      - working-directory: apps/mobile
+        run: |
+          flutter pub get
+          dart format --output=none --set-exit-if-changed lib test integration_test
+          flutter analyze
+          flutter test
+          dart compile js -O2 web/drift_worker.dart -o web/drift_worker.dart.js
+          flutter build web
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: web-preview
+          path: apps/mobile/build/web
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: denoland/setup-deno@22d081ff2d3a40755e97629de92e3bcbfa7cf2ed # v2.0.5
+        with:
+          deno-version: '2.9.7'
+      - run: deno check --config supabase/functions/deno.json supabase/functions/*/index.ts
+      - run: deno test --config supabase/functions/deno.json --allow-env --allow-read supabase/functions/tests
+      - run: deno run --config scripts/deno.json --allow-read --allow-env scripts/test-database.ts
+  android-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2
+        with:
+          flutter-version: '3.47.6'
+          cache: true
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6
+        with:
+          distribution: temurin
+          java-version: '21'
+      - working-directory: apps/mobile
+        run: flutter pub get
+      - name: Enable KVM on disposable CI runner
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - uses: ReactiveCircus/android-emulator-runner@c9c93e6ba9c4194322e114c40970d5983d9a07cc # v2.38.0
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_7_pro
+          ndk: 28.2.13676358
+          cmake: 3.22.1
+          script: cd apps/mobile && flutter test integration_test/quest_flow_test.dart -d emulator-5554
+  native:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2
+        with:
+          flutter-version: '3.47.6'
+          cache: true
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        if: runner.os == 'Linux'
+        with:
+          distribution: temurin
+          java-version: '21'
+      - working-directory: apps/mobile
+        run: flutter pub get
+      - working-directory: apps/mobile
+        if: runner.os == 'Linux'
+        run: flutter build apk --debug
+      - working-directory: apps/mobile
+        if: runner.os == 'macOS'
+        run: flutter build ios --simulator --no-codesign
+      - if: runner.os == 'macOS'
+        run: python3 scripts/run-ios-tests.py
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: runner.os == 'Linux'
+        with:
+          name: android-debug
+          path: apps/mobile/build/app/outputs/flutter-apk/app-debug.apk

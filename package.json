@@ -1,0 +1,10 @@
+{
+  "name": "nurturio-content-tools",
+  "private": true,
+  "scripts": {
+    "validate:models": "node scripts/validate-3d-models.mjs"
+  },
+  "devDependencies": {
+    "gltf-validator": "2.0.0-dev.3.10"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "license": "Original Nurturio models; repository owner controls licensing.",
+  "models": [
+    {
+      "id": "village",
+      "nodes": 198,
+      "triangles": 6392
+    },
+    {
+      "id": "honey",
+      "nodes": 171,
+      "triangles": 5432
+    },
+    {
+      "id": "olive",
+      "nodes": 101,
+      "triangles": 4396
+    },
+    {
+      "id": "chicken",
+      "nodes": 127,
+      "triangles": 5296
+    },
+    {
+      "id": "garden",
+      "nodes": 167,
+      "triangles": 5836
+    },
+    {
+      "id": "plant-tomato",
+      "nodes": 16,
+      "triangles": 1452
+    },
+    {
+      "id": "plant-sunflower",
+      "nodes": 23,
+      "triangles": 1892
+    },
+    {
+      "id": "plant-mint",
+      "nodes": 12,
+      "triangles": 1012
+    },
+    {
+      "id": "plant-carrot",
+      "nodes": 13,
+      "triangles": 1084
+    },
+    {
+      "id": "plant-strawberry",
+      "nodes": 16,
+      "triangles": 1452
+    },
+    {
+      "id": "plant-marigold",
+      "nodes": 23,
+      "triangles": 1892
+    },
+    {
+      "id": "plant-lettuce",
+      "nodes": 19,
+      "triangles": 1012
+    },
+    {
+      "id": "plant-basil",
+      "nodes": 12,
+      "triangles": 1012
+    },
+    {
+      "id": "sprout",
+      "nodes": 12,
+      "triangles": 1012
+    },
+    {
+      "id": "leafy",
+      "nodes": 12,
+      "triangles": 1012
+    },
+    {
+      "id": "buzz",
+      "nodes": 18,
+      "triangles": 1416
+    }
+  ]
+}
