@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../app/theme.dart';
 import '../../core/app_controller.dart';
 import '../../game/components/world_art.dart';
+import '../../game/components/world_view.dart';
 
 class VillageScreen extends ConsumerWidget {
   const VillageScreen({super.key});
@@ -90,7 +91,55 @@ class VillageScreen extends ConsumerWidget {
           ],
         ),
         const SizedBox(height: 12),
-        const Text('Welcome to your village. What will you nurture today?'),
+        const Text(
+          'Real processes. Small discoveries. A world you can explore.',
+        ),
+        const SizedBox(height: 22),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(28),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: Theme.of(context).brightness == Brightness.dark
+                  ? const [Color(0xFF243E31), Color(0xFF152B23)]
+                  : const [Color(0xFFE6EDD8), Color(0xFFF3EEE1)],
+            ),
+          ),
+          child: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.fromLTRB(22, 20, 22, 0),
+                child: Row(
+                  children: [
+                    Icon(Icons.public, size: 18),
+                    SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        'YOUR LIVING VILLAGE',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 12,
+                          letterSpacing: 1.5,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const WorldView(world: 'village', height: 310),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 18),
+                child: Text(
+                  c.settings['scene3d'] == false
+                      ? 'A gentler view of your village'
+                      : 'Drag to rotate · Pinch to look closer',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ),
+            ],
+          ),
+        ),
         const SizedBox(height: 22),
         if (next != null)
           SoftCard(
@@ -263,7 +312,12 @@ class TopicScreen extends ConsumerWidget {
       appBar: AppBar(leading: const VillageBackButton(), title: Text(t.name)),
       body: PageBody(
         children: [
-          WorldArt(world: t.id, height: 220),
+          WorldView(world: t.id, height: 310),
+          const SizedBox(height: 10),
+          const Text(
+            'Drag to explore the scene. Every lesson is a new discovery.',
+          ),
+          const SizedBox(height: 18),
           Text(t.subject, style: Theme.of(context).textTheme.displaySmall),
           const SizedBox(height: 10),
           Text(t.goal),

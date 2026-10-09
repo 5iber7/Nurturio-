@@ -83,6 +83,15 @@ class SettingsScreen extends ConsumerWidget {
           ),
           SwitchListTile(
             contentPadding: EdgeInsets.zero,
+            title: const Text('Interactive 3D scenes'),
+            subtitle: const Text(
+              'Switch off for lighter visuals on older devices',
+            ),
+            value: c.settings['scene3d'] != false,
+            onChanged: (v) => c.setSetting('scene3d', v),
+          ),
+          SwitchListTile(
+            contentPadding: EdgeInsets.zero,
             title: const Text('Nature music'),
             value: c.settings['music'] == true,
             onChanged: (v) {

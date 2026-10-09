@@ -2,6 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import 'world_view.dart';
+
 class WorldArt extends StatelessWidget {
   final String world;
   final double height;
@@ -22,9 +24,11 @@ class WorldArt extends StatelessWidget {
             : world == 'chicken'
             ? 'a chicken coop'
             : 'a garden'}',
-    child: CustomPaint(
-      size: Size(double.infinity, height),
-      painter: WorldPainter(world, progress),
+    child: WorldView(
+      world: world,
+      height: height,
+      interactive: false,
+      animate: false,
     ),
   );
 }

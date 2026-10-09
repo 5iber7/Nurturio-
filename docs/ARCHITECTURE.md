@@ -1,6 +1,6 @@
 # Architecture
 
-The mobile app owns its offline state. Flutter renders screens, Flame renders animated process scenes, and reusable templates handle sorting, matching, placement, sequencing, pouring and rhythm. Riverpod supplies a single initialized controller; go_router guards onboarding, parent access and session breaks.
+The mobile app owns its offline state. Flutter renders screens, bundled GLB assets provide animated 3D dioramas through `WorldView`/model-viewer, Flame drives pouring/rhythm controls, and reusable templates handle sorting, matching, placement and sequencing. Riverpod supplies a single initialized controller; go_router guards onboarding, parent access and session breaks.
 
 `core/content.dart` decodes bundled versioned packs. `game/engine/process_engine.dart` is independent of UI and uses an injected clock. `core/database.dart` stores aggregate saves and a durable outbox in SQLite through Drift. Writes are serialized and snapshots copied before queuing; saved steps and action identities survive interruption. Timers recompute on resume. Device clocks remain untrusted offline.
 
@@ -14,4 +14,4 @@ Cloud profiles use local UUIDs and can be imported through explicit sync after a
 
 Adding content requires a pack, source references and existing interaction configurations. Truly new mechanics require template code. All four launch worlds share the same engine. Plant field-guide entries are independently authored; release content still requires expert review.
 
-The optional browser build uses Drift's WASM SQLite module and worker. It is a convenient QA preview, not a replacement for native projects or a published website.
+The public Sites browser build uses Drift's WASM SQLite module and worker for local saves. It ships the model-viewer JavaScript and all models with the app. Native model viewers serve bundled assets over loopback without requiring an external network. Browser first load still requires the hosted build. Reduced motion stops automatic model animation; `scene3d=false` retains the original painters. Unsupported native desktop/headless platforms use the painter fallback. WebGL/native WebView behavior must be validated separately from headless widget tests.

@@ -5,6 +5,7 @@
     <application
         android:label="Nurturio"
         android:name="${applicationName}"
+        android:networkSecurityConfig="@xml/model_viewer_network"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

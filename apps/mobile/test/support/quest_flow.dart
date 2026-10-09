@@ -42,8 +42,7 @@ Future<void> fullQuestFlow(WidgetTester tester) async {
 
   for (var index = 0; index < 32; index++) {
     final q = c.nextQuest!;
-    await tester.tap(find.byTooltip('Continue learning'));
-    await tester.pump(const Duration(milliseconds: 300));
+    await tap(find.byTooltip('Continue learning'));
     await tap(find.text('Let’s try it'));
     if (q.template == 'pour' || q.template == 'timing') {
       for (var i = 0; i < 5; i++) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../app/theme.dart';
+import '../../game/components/world_view.dart';
 import '../../core/app_controller.dart';
 
 class BuzzScreen extends ConsumerStatefulWidget {
@@ -61,6 +62,7 @@ class _BuzzScreenState extends ConsumerState<BuzzScreen> {
       ),
       body: PageBody(
         children: [
+          const WorldView(world: 'buzz', height: 160, interactive: false),
           SoftCard(
             color: const Color(0xFFFFEDC5),
             child: Row(

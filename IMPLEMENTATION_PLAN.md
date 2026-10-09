@@ -13,3 +13,10 @@
 Acceptance criteria and constraints are in NURTURIO_BUILD_PROMPT.md. Completion means behavior is implemented and checked, not merely a screen shell.
 
 These checkboxes describe implementation of the initial playable build. See docs/RELEASE_BLOCKERS.md for separate public-release requirements.
+
+## 3D modernization — 10 October 2026
+
+- [x] Original bundled village, four world dioramas, animated farmer/animals and eight plant models; offline rendering and lighter-graphics fallback.
+- [x] Interactive camera exploration, updated light/dark surfaces, responsive navigation and reduced-motion controls.
+- [x] glTF validation, all 32 lesson UI flow, Flutter analysis/tests and Android compilation. Public browser/WebGL QA is recorded in BUILD_STATUS.md.
+- [ ] Physical Android/iPhone GPU, touch gestures, memory and thermal profiling. Web browser QA and successful compilation do not satisfy this check.

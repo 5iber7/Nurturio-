@@ -27,6 +27,8 @@ dependencies:
   intl: 0.20.3
   audioplayers: 6.8.1
   video_player: 2.14.1
+  model_viewer_plus: 1.10.0
+  webview_flutter: 4.14.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -40,6 +42,7 @@ flutter:
   assets:
     - assets/content/
     - assets/audio/
+    - assets/models/
   fonts:
     - family: Nunito
       fonts:

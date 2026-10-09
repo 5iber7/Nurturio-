@@ -2,6 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import 'world_view.dart';
+
 class PlantArt extends StatelessWidget {
   final String plant;
   final double progress;
@@ -9,9 +11,18 @@ class PlantArt extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Semantics(
     label: 'Illustrated growth stage of $plant',
-    child: CustomPaint(
-      size: const Size(double.infinity, 165),
-      painter: PlantPainter(plant, progress),
+    child: WorldView(
+      world: progress < .3
+          ? 'sprout'
+          : progress < .7
+          ? 'leafy'
+          : 'plant-$plant',
+      height: 210,
+      animate: false,
+      fallback: CustomPaint(
+        size: const Size(double.infinity, 165),
+        painter: PlantPainter(plant, progress),
+      ),
     ),
   );
 }

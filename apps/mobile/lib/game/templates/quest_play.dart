@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import '../../core/app_controller.dart';
 import '../../core/content.dart';
 import '../../core/audio_service.dart';
-import '../components/world_art.dart';
+import '../components/world_view.dart';
 
 class QuestScene extends FlameGame with TapCallbacks {
   final String topicWorld, template;
@@ -38,13 +38,8 @@ class QuestScene extends FlameGame with TapCallbacks {
   @override
   void render(Canvas canvas) {
     super.render(canvas);
-    WorldPainter(
-      topicWorld,
-      progress,
-      time: elapsed,
-    ).paint(canvas, Size(size.x, size.y));
     if (template == 'pour') {
-      final r = Rect.fromLTWH(size.x * .08, size.y * .86, size.x * .84, 12);
+      final r = Rect.fromLTWH(size.x * .08, size.y * .4, size.x * .84, 12);
       canvas.drawRRect(
         RRect.fromRectAndRadius(r, const Radius.circular(6)),
         Paint()..color = Colors.white,
@@ -63,7 +58,7 @@ class QuestScene extends FlameGame with TapCallbacks {
       );
     }
     if (template == 'timing') {
-      final r = Rect.fromLTWH(size.x * .08, size.y * .85, size.x * .84, 14);
+      final r = Rect.fromLTWH(size.x * .08, size.y * .4, size.x * .84, 14);
       canvas.drawRRect(
         RRect.fromRectAndRadius(r, const Radius.circular(7)),
         Paint()..color = Colors.white,
@@ -154,13 +149,16 @@ class _QuestPlayState extends State<QuestPlay> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(24),
-          child: SizedBox(
-            height: 250,
-            child: ExcludeSemantics(child: GameWidget(game: scene)),
+        WorldView(world: q.topicId, height: 260),
+        const SizedBox(height: 8),
+        if (isPulse)
+          ClipRRect(
+            borderRadius: BorderRadius.circular(24),
+            child: SizedBox(
+              height: 58,
+              child: ExcludeSemantics(child: GameWidget(game: scene)),
+            ),
           ),
-        ),
         const SizedBox(height: 16),
         Text(q.instruction, style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 8),

@@ -4,7 +4,8 @@
 
 ## What is implemented
 
-- Four illustrated worlds and 32 interactive lessons: honey, olive oil, chicken care, and gardening.
+- Four interactive 3D worlds and 32 lessons: honey, olive oil, chicken care, and gardening.
+- Original animated farmer, bees and chickens, orbit/zoom controls, physically based materials, growing plant models and modern light/dark themes. Settings offers lighter illustrations and reduced motion.
 - Six reusable interaction templates, learning checks, compressed waits, saved progress, XP, coins, collections and earned decorations.
 - Offline encyclopedia, eight plant profiles, glossary, reference notes and curated Ask Buzz.
 - Camera/gallery previews with metadata stripping; identification adapter and result flow are disabled in production by default.
@@ -47,6 +48,8 @@ Open `http://localhost:5180`. SQLite's WebAssembly binary and the Drift worker a
 
 ```sh
 node scripts/validate-content.mjs
+npm ci
+npm run validate:models
 node scripts/secret-scan.mjs
 cd apps/mobile
 flutter analyze
@@ -69,6 +72,8 @@ The PostgreSQL harness exercises migrations and RLS using PGlite with Auth/Stora
 `apps/mobile/assets/content` contains runtime packs. `scripts/build-content.mjs` is the authored source; edit it and regenerate using `node scripts/build-content.mjs`. Validate afterward. The bundled processes use qualitative real-world timings rather than unsupported fixed biological numbers. Eight plants have individual care profiles; deeper cultivar simulations are future content work.
 
 Add a topic pack with an existing template, register it in `manifest.json`, and update the generator/validator, source registry and server approved-context module. A new fundamental interaction requires a new template. See [architecture](docs/ARCHITECTURE.md) and [assets](docs/ASSETS.md).
+
+Regenerate original 3D models with `node scripts/build-3d-models.mjs`, then run `npm run validate:models`. Models and the renderer's JavaScript are bundled; native scenes do not need a CDN or cloud connection. These are stylized nature dioramas with real mesh depth and lighting. The biological teaching content remains independent of presentation.
 
 ## Optional Supabase configuration
 

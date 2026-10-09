@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-const ink = Color(0xFF25382D),
-    cream = Color(0xFFFFF8EB),
-    olive = Color(0xFF456A43),
+const ink = Color(0xFF18372E),
+    cream = Color(0xFFF5F7F1),
+    olive = Color(0xFF3E7459),
     amber = Color(0xFFF5B942);
 ThemeData nurturioTheme({Brightness brightness = Brightness.light}) {
   final dark = brightness == Brightness.dark;
-  final background = dark ? const Color(0xFF151D18) : cream;
+  final background = dark ? const Color(0xFF0E1B16) : cream;
   final foreground = dark ? const Color(0xFFE9EEDF) : ink;
-  final card = dark ? const Color(0xFF222E25) : Colors.white;
+  final card = dark ? const Color(0xFF1E3027) : Colors.white;
   return ThemeData(
     useMaterial3: true,
     scaffoldBackgroundColor: background,
@@ -22,21 +22,27 @@ ThemeData nurturioTheme({Brightness brightness = Brightness.light}) {
       onSurface: foreground,
     ),
     fontFamily: 'Nunito',
+    navigationBarTheme: NavigationBarThemeData(
+      backgroundColor: card,
+      indicatorColor: dark ? const Color(0xFF355442) : const Color(0xFFDDE8D8),
+      height: 76,
+    ),
     textTheme: TextTheme(
       displaySmall: TextStyle(
-        fontSize: 36,
-        fontWeight: FontWeight.w800,
+        fontSize: 38,
+        fontWeight: FontWeight.w700,
         color: foreground,
         height: 1.12,
+        letterSpacing: -.9,
       ),
       headlineMedium: TextStyle(
         fontSize: 28,
-        fontWeight: FontWeight.w800,
+        fontWeight: FontWeight.w700,
         color: foreground,
       ),
       titleLarge: TextStyle(
         fontSize: 21,
-        fontWeight: FontWeight.w800,
+        fontWeight: FontWeight.w700,
         color: foreground,
       ),
       bodyLarge: TextStyle(fontSize: 17, color: foreground, height: 1.45),
@@ -51,7 +57,7 @@ ThemeData nurturioTheme({Brightness brightness = Brightness.light}) {
       style: FilledButton.styleFrom(
         minimumSize: const Size(48, 52),
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-        textStyle: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+        textStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
       ),
     ),
@@ -102,6 +108,13 @@ class SoftCard extends StatelessWidget {
                   ))
           : color ?? Colors.white,
       borderRadius: BorderRadius.circular(24),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withValues(alpha: .025),
+          blurRadius: 24,
+          offset: const Offset(0, 7),
+        ),
+      ],
       border: Border.all(
         color: Theme.of(context).colorScheme.onSurface.withValues(alpha: .08),
       ),

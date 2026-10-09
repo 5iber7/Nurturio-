@@ -8,6 +8,14 @@ Four worlds, 32 interactive quests, six reusable mechanics, offline saves, XP/co
 
 Dark mode is available in Settings → Appearance: Light, Dark or Use device setting. Theme changes apply immediately and persist with the local save. Sites hosts the browser build; current deployment is managed through `.openai/hosting.json`.
 
+### 3D modernization — 10 October 2026
+
+The village, four topics and lessons now use original bundled glTF dioramas with an animated farmer guide, bees and chickens, PBR materials, camera rotation/zoom and local lighting. Growing beds display eight mature plant models and two earlier growth stages. Buzz has a 3D bee. Both themes have updated typography, colors, navigation and card surfaces. Settings preserves reduced motion and adds a persisted lighter-graphics option. All four content packs, 32 quests, guest access and local saves remain in place.
+
+Actual verification for this revision: Flutter 3.47.6 analysis has no issues; all 17 tests pass, including completion of all 32 lessons; Khronos glTF Validator reports no errors in all 16 models; content validation passes. Android debug APK and JavaScript web builds succeed. Six Deno tests, five function type-checks and the PostgreSQL/PGlite suite pass. Local 390×844 browser QA confirms WebGL rendering, drag-to-orbit, world-card navigation, light/dark presentation, lighter graphics and preference persistence after reload. Models and the renderer are bundled locally (approximately 1.2 MB for models); no remote model/CDN dependency was introduced.
+
+These are stylized 3D nature scenes. Headless tests use the original artwork fallback and do not validate the GPU renderer. Physical Android/iPhone rendering, pinch gestures, memory/thermal performance and iOS runtime remain acceptance checks. The Android compile result is not a device runtime claim. Existing TTS optional-WASM/Kotlin migration warnings remain; the shipped browser build uses JavaScript.
+
 Optional adult email/password accounts connect to `nntizitzglpyfepnmasp`. The public Site retains guest play. The account screen offers sign-up, sign-in and sign-out with local form validation, confirmation messaging and server-owned sessions. Cloud sync is disabled in this auth-only deployment, as requested. The connected administrative Supabase account cannot access this project; migrations/functions have not been deployed there.
 
 ## Verified locally
