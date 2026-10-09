@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/theme.dart';
+import '../../app/selection_field.dart';
 import '../../core/app_controller.dart';
 import '../../game/components/world_art.dart';
 
@@ -54,15 +55,15 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             Text(texts[step], style: Theme.of(context).textTheme.bodyLarge),
             const SizedBox(height: 24),
             if (step == 2) ...[
-              DropdownButtonFormField<String>(
-                initialValue: age,
-                decoration: const InputDecoration(labelText: 'Age group'),
-                items: const [
-                  DropdownMenuItem(value: 'under13', child: Text('Under 13')),
-                  DropdownMenuItem(value: 'teen', child: Text('13–17')),
-                  DropdownMenuItem(value: 'adult', child: Text('18 or older')),
+              SelectionField<String>(
+                value: age,
+                label: 'Age group',
+                options: const [
+                  ('under13', 'Under 13'),
+                  ('teen', '13–17'),
+                  ('adult', '18 or older'),
                 ],
-                onChanged: (v) => setState(() => age = v!),
+                onChanged: (v) => setState(() => age = v),
               ),
               const SizedBox(height: 16),
               SegmentedButton<String>(

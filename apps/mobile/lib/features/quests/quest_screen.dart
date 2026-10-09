@@ -10,6 +10,7 @@ import '../../core/app_controller.dart';
 import '../../game/engine/process_engine.dart';
 import '../../game/templates/quest_play.dart';
 import '../../game/components/world_art.dart';
+import '../../game/components/choice_card.dart';
 import 'lesson_video.dart';
 
 class QuestScreen extends ConsumerStatefulWidget {
@@ -145,20 +146,16 @@ class _QuestScreenState extends ConsumerState<QuestScreen>
             if (showCheck) ...[
               const SizedBox(height: 14),
               Text(q.question),
-              for (var i = 0; i < q.answers.length; i++)
-                Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: OutlinedButton(
-                    onPressed: () {
-                      if (c.speedUp(q, i)) {
-                        setState(() => showCheck = false);
-                      } else {
-                        setState(() => message = 'Try again. ${q.fact}');
-                      }
-                    },
-                    child: Text(q.answers[i]),
-                  ),
-                ),
+              LearningCheck(
+                key: ValueKey('${q.id}-speedup'),
+                answers: q.answers,
+                explanation: q.fact,
+                onAnswer: (i) {
+                  final correct = c.speedUp(q, i);
+                  if (correct) setState(() => showCheck = false);
+                  return correct;
+                },
+              ),
             ],
           ],
           if (p.status == ProcessStatus.ready) ...[
@@ -207,20 +204,16 @@ class _QuestScreenState extends ConsumerState<QuestScreen>
             ),
             const SizedBox(height: 12),
             Text(q.question, style: Theme.of(context).textTheme.bodyLarge),
-            for (var i = 0; i < q.answers.length; i++)
-              Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: OutlinedButton(
-                  onPressed: () {
-                    if (c.claim(q, i)) {
-                      setState(() => message = '');
-                    } else {
-                      setState(() => message = 'Not quite. ${q.fact}');
-                    }
-                  },
-                  child: Text(q.answers[i]),
-                ),
-              ),
+            LearningCheck(
+              key: ValueKey('${q.id}-claim'),
+              answers: q.answers,
+              explanation: q.fact,
+              onAnswer: (i) {
+                final correct = c.claim(q, i);
+                if (correct) setState(() => message = '');
+                return correct;
+              },
+            ),
           ],
           if (p.status == ProcessStatus.completed) ...[
             Icon(Icons.verified_rounded, size: 84, color: accent(context)),

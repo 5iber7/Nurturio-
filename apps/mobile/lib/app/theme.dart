@@ -97,16 +97,7 @@ class SoftCard extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) => Container(
-    padding: padding,
     decoration: BoxDecoration(
-      color: Theme.of(context).brightness == Brightness.dark
-          ? (color == null
-                ? Theme.of(context).colorScheme.surfaceContainer
-                : Color.alphaBlend(
-                    color!.withValues(alpha: .12),
-                    Theme.of(context).colorScheme.surfaceContainer,
-                  ))
-          : color ?? Colors.white,
       borderRadius: BorderRadius.circular(24),
       boxShadow: [
         BoxShadow(
@@ -115,11 +106,25 @@ class SoftCard extends StatelessWidget {
           offset: const Offset(0, 7),
         ),
       ],
-      border: Border.all(
-        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: .08),
-      ),
     ),
-    child: child,
+    child: Material(
+      color: Theme.of(context).brightness == Brightness.dark
+          ? (color == null
+                ? Theme.of(context).colorScheme.surfaceContainer
+                : Color.alphaBlend(
+                    color!.withValues(alpha: .12),
+                    Theme.of(context).colorScheme.surfaceContainer,
+                  ))
+          : color ?? Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24),
+        side: BorderSide(
+          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: .08),
+        ),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Padding(padding: padding, child: child),
+    ),
   );
 }
 

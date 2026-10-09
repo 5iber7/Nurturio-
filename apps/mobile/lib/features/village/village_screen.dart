@@ -281,15 +281,22 @@ class VillageScreen extends ConsumerWidget {
         ),
         const SizedBox(height: 24),
         SoftCard(
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Icon(Icons.emoji_nature, size: 38, color: accent(context)),
-              const SizedBox(width: 16),
-              const Expanded(
-                child: Text(
-                  'Curious about something? Buzz has a little wisdom to share.',
-                ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(Icons.emoji_nature, size: 38, color: accent(context)),
+                  const SizedBox(width: 16),
+                  const Expanded(
+                    child: Text(
+                      'Curious about something? Buzz has a little wisdom to share.',
+                    ),
+                  ),
+                ],
               ),
+              const SizedBox(height: 12),
               TextButton(
                 onPressed: () => context.push('/buzz'),
                 child: const Text('Ask Buzz'),

@@ -58,15 +58,23 @@ class _WorldViewState extends ConsumerState<WorldView>
                 defaultTargetPlatform == TargetPlatform.iOS) &&
             WebViewPlatform.instance != null);
     if (!supported || c.settings['scene3d'] == false) {
-      if (widget.fallback != null) return widget.fallback!;
-      return SizedBox(
-        height: widget.height,
-        child: CustomPaint(
-          painter: WorldPainter(
-            widget.world == 'village' ? 'garden' : widget.world,
-            0,
+      if (widget.fallback != null) {
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(22),
+          child: SizedBox(height: widget.height, child: widget.fallback),
+        );
+      }
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(22),
+        child: SizedBox(
+          height: widget.height,
+          child: CustomPaint(
+            painter: WorldPainter(
+              widget.world == 'village' ? 'garden' : widget.world,
+              0,
+            ),
+            size: Size(double.infinity, widget.height),
           ),
-          size: Size(double.infinity, widget.height),
         ),
       );
     }
@@ -111,7 +119,7 @@ class _WorldViewState extends ConsumerState<WorldView>
                 : const Color(0xFFE9EEDF),
             debugLogging: false,
             relatedCss:
-                '#$id { --poster-color: transparent; ${widget.interactive ? '' : 'pointer-events:none;'} }',
+                '#$id { --poster-color: transparent; overflow:hidden; max-width:100%; border-radius:22px; ${widget.interactive ? '' : 'pointer-events:none;'} }',
           ),
         ),
       ),

@@ -4,11 +4,14 @@ import 'dart:math' as math;
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../core/app_controller.dart';
 import '../../core/content.dart';
 import '../../core/audio_service.dart';
 import '../components/world_view.dart';
+import '../components/choice_card.dart';
+import '../engine/process_engine.dart';
 
 class QuestScene extends FlameGame with TapCallbacks {
   final String topicWorld, template;
@@ -87,6 +90,7 @@ class QuestPlay extends StatefulWidget {
 class _QuestPlayState extends State<QuestPlay> {
   late final QuestScene scene;
   String feedback = '';
+  String? selectedId, incorrectTarget;
   Timer? hold;
   @override
   void initState() {
@@ -108,6 +112,10 @@ class _QuestPlayState extends State<QuestPlay> {
 
   void _pourOrTime() {
     final q = widget.quest, c = widget.controller;
+    if (!mounted || c.process(q).status != ProcessStatus.playing) {
+      hold?.cancel();
+      return;
+    }
     if (q.template == 'timing' &&
         c.settings['motion'] == true &&
         (scene.rhythm < .25 || scene.rhythm > .75)) {
@@ -115,6 +123,7 @@ class _QuestPlayState extends State<QuestPlay> {
       return;
     }
     c.recordAction(q, 'pulse-${c.doneActions(q)}');
+    if (c.process(q).status != ProcessStatus.playing) hold?.cancel();
     audio.action(c.settings['sound'] == true);
     setState(
       () => feedback = q.template == 'pour' ? 'A little more…' : 'Steady work!',
@@ -123,9 +132,14 @@ class _QuestPlayState extends State<QuestPlay> {
 
   void accept(QuestItem item, String target) {
     final q = widget.quest, c = widget.controller;
+    if (c.process(q).status != ProcessStatus.playing) return;
     if (c.actions[q.id]?.contains(item.id) == true) return;
     if (target != item.target) {
-      setState(() => feedback = 'That doesn’t quite fit. Try another place.');
+      setState(() {
+        selectedId = item.id;
+        incorrectTarget = target;
+        feedback = 'Try another place for ${item.label}.';
+      });
       return;
     }
     if (q.template == 'sequence' && q.items.indexOf(item) != c.doneActions(q)) {
@@ -135,8 +149,13 @@ class _QuestPlayState extends State<QuestPlay> {
       return;
     }
     c.recordAction(q, item.id);
+    HapticFeedback.selectionClick();
     audio.action(c.settings['sound'] == true);
-    setState(() => feedback = 'That’s it! ${item.label} → $target');
+    setState(() {
+      selectedId = null;
+      incorrectTarget = null;
+      feedback = 'That’s it! ${item.label} → $target';
+    });
   }
 
   @override
@@ -146,6 +165,7 @@ class _QuestPlayState extends State<QuestPlay> {
     scene.progress = count / c.targetActions(q);
     final isPulse = q.template == 'pour' || q.template == 'timing';
     final targets = q.items.map((i) => i.target).toSet().toList();
+    final selected = q.items.where((i) => i.id == selectedId).firstOrNull;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -165,6 +185,17 @@ class _QuestPlayState extends State<QuestPlay> {
         Text(
           '$count of ${c.targetActions(q)} actions',
           style: Theme.of(context).textTheme.bodyMedium,
+        ),
+        const SizedBox(height: 8),
+        Semantics(
+          container: true,
+          child: LinearProgressIndicator(
+            value: count / c.targetActions(q),
+            minHeight: 7,
+            borderRadius: BorderRadius.circular(7),
+            semanticsLabel:
+                'Activity progress: $count of ${c.targetActions(q)} actions complete',
+          ),
         ),
         const SizedBox(height: 12),
         if (isPulse)
@@ -199,83 +230,69 @@ class _QuestPlayState extends State<QuestPlay> {
             ),
           ),
         if (!isPulse) ...[
-          Wrap(
-            spacing: 12,
-            runSpacing: 12,
-            children: [
-              for (final item in q.items)
-                if (c.actions[q.id]?.contains(item.id) != true)
-                  Draggable<QuestItem>(
-                    data: item,
-                    feedback: Material(
-                      color: Colors.transparent,
-                      child: Chip(label: Text(item.label)),
-                    ),
-                    childWhenDragging: Opacity(
-                      opacity: .35,
-                      child: Chip(label: Text(item.label)),
-                    ),
-                    child: Chip(
-                      label: Text(item.label),
-                      avatar: const Icon(Icons.drag_indicator, size: 18),
-                    ),
-                  ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          Wrap(
-            spacing: 12,
-            runSpacing: 12,
-            children: [
-              for (final target in targets)
-                DragTarget<QuestItem>(
-                  onAcceptWithDetails: (d) => accept(d.data, target),
-                  builder: (context, candidates, rejected) => Container(
-                    constraints: const BoxConstraints(
-                      minWidth: 100,
-                      minHeight: 58,
-                    ),
-                    padding: const EdgeInsets.all(14),
-                    decoration: BoxDecoration(
-                      color: candidates.isNotEmpty
-                          ? Theme.of(context).colorScheme.primaryContainer
-                          : Theme.of(context).colorScheme.surfaceContainer,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                    ),
-                    child: Text(
-                      target,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+          const Text('1. Select an item'),
+          const SizedBox(height: 8),
+          for (final item in q.items)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: LongPressDraggable<QuestItem>(
+                data: item,
+                maxSimultaneousDrags: c.actions[q.id]?.contains(item.id) == true
+                    ? 0
+                    : 1,
+                feedback: Material(
+                  color: Theme.of(context).colorScheme.surfaceContainer,
+                  borderRadius: BorderRadius.circular(16),
+                  elevation: 6,
+                  child: SizedBox(
+                    width: 200,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Text(item.label, softWrap: true),
                     ),
                   ),
                 ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          const Text(
-            'Drag to a place above, or use these accessible controls:',
-          ),
-          for (final item in q.items)
-            if (c.actions[q.id]?.contains(item.id) != true)
-              Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: [
-                    Text('${item.label}: '),
-                    for (final target in targets)
-                      OutlinedButton(
-                        onPressed: () => accept(item, target),
-                        child: Text(target),
-                      ),
-                  ],
+                child: ChoiceCard(
+                  key: ValueKey('quest-item-${item.id}'),
+                  label: item.label,
+                  selected: selectedId == item.id,
+                  completed: c.actions[q.id]?.contains(item.id) == true,
+                  onPressed: c.actions[q.id]?.contains(item.id) == true
+                      ? null
+                      : () => setState(() {
+                          selectedId = item.id;
+                          incorrectTarget = null;
+                          feedback = '';
+                        }),
                 ),
               ),
+            ),
+          const SizedBox(height: 12),
+          Text(
+            selected == null
+                ? '2. Choose a destination after selecting an item'
+                : '2. Where does ${selected.label} belong?',
+          ),
+          const SizedBox(height: 8),
+          for (final target in targets)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: DragTarget<QuestItem>(
+                onAcceptWithDetails: (d) => accept(d.data, target),
+                builder: (context, candidates, rejected) => ChoiceCard(
+                  key: ValueKey('quest-target-${q.id}-$target'),
+                  label: target,
+                  selected: candidates.isNotEmpty,
+                  incorrect: incorrectTarget == target,
+                  onPressed: selected == null
+                      ? null
+                      : () => accept(selected, target),
+                ),
+              ),
+            ),
+          const Text(
+            'You can also hold an item and drag it to its destination.',
+          ),
         ],
         if (feedback.isNotEmpty)
           Padding(

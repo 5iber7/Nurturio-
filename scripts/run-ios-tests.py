@@ -5,5 +5,5 @@ devices=[d for group in inventory['devices'].values() for d in group if d.get('i
 if not devices: raise RuntimeError('No available iPhone simulator runtime on this runner.')
 device=next((d for d in devices if d['state']=='Booted'),devices[0])
 if device['state']!='Booted': subprocess.run(['xcrun','simctl','boot',device['udid']],check=True)
-subprocess.run(['xcrun','simctl','bootstatus',device['udid'],'-b'],check=True,timeout=180)
+subprocess.run(['xcrun','simctl','bootstatus',device['udid'],'-b'],check=True,timeout=420)
 subprocess.run(['flutter','test','integration_test/quest_flow_test.dart','-d',device['udid']],cwd='apps/mobile',check=True,timeout=600)

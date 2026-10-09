@@ -55,7 +55,8 @@ Future<void> fullQuestFlow(WidgetTester tester) async {
       }
     } else {
       for (final item in q.items) {
-        await tap(find.widgetWithText(OutlinedButton, item.target).first);
+        await tap(find.byKey(ValueKey('quest-item-${item.id}')));
+        await tap(find.byKey(ValueKey('quest-target-${q.id}-${item.target}')));
       }
     }
     if (q.waitSeconds > 0) {

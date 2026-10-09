@@ -81,10 +81,11 @@ class CollectionScreen extends ConsumerWidget {
                         Text(
                           '${c.topicCount(t)} / ${t.quests.length} discoveries',
                         ),
+                        if (c.topicCount(t) == t.quests.length)
+                          const Text('Earned!'),
                       ],
                     ),
                   ),
-                  if (c.topicCount(t) == t.quests.length) const Text('Earned!'),
                 ],
               ),
             ),
@@ -123,11 +124,20 @@ class CollectionScreen extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 10),
             child: SoftCard(
-              child: Row(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Icon(Icons.local_florist_outlined, color: accent(context)),
-                  const SizedBox(width: 12),
-                  Expanded(child: Text(d.$2)),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.local_florist_outlined,
+                        color: accent(context),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(child: Text(d.$2)),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
                   FilledButton(
                     onPressed: c.decorations.contains(d.$1) || c.coins < d.$3
                         ? null

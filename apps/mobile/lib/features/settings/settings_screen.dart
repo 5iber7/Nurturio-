@@ -9,6 +9,7 @@ import 'package:go_router/go_router.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../app/theme.dart';
+import '../../app/selection_field.dart';
 import '../../core/app_controller.dart';
 import '../../core/services.dart';
 import '../../core/audio_service.dart';
@@ -32,42 +33,30 @@ class SettingsScreen extends ConsumerWidget {
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           const SizedBox(height: 20),
-          DropdownButtonFormField<String>(
-            initialValue: c.settings['theme'] ?? 'system',
-            decoration: const InputDecoration(labelText: 'Appearance'),
-            items: const [
-              DropdownMenuItem(
-                value: 'system',
-                child: Text('Use device setting'),
-              ),
-              DropdownMenuItem(value: 'light', child: Text('Light')),
-              DropdownMenuItem(value: 'dark', child: Text('Dark')),
+          SelectionField<String>(
+            value: c.settings['theme'] ?? 'system',
+            label: 'Appearance',
+            options: const [
+              ('system', 'Use device setting'),
+              ('light', 'Light'),
+              ('dark', 'Dark'),
             ],
             onChanged: (v) => c.setSetting('theme', v),
           ),
           const SizedBox(height: 16),
-          DropdownButtonFormField<String>(
-            initialValue: c.settings['reading'],
-            decoration: const InputDecoration(labelText: 'Reading level'),
-            items: const [
-              DropdownMenuItem(value: 'Simple', child: Text('Simple')),
-              DropdownMenuItem(value: 'Explorer', child: Text('Explorer')),
-            ],
+          SelectionField<String>(
+            value: c.settings['reading'],
+            label: 'Reading level',
+            options: const [('Simple', 'Simple'), ('Explorer', 'Explorer')],
             onChanged: (v) => c.setSetting('reading', v),
           ),
           const SizedBox(height: 16),
-          DropdownButtonFormField<String>(
-            initialValue: c.settings['pace'],
-            decoration: const InputDecoration(labelText: 'Game pace'),
-            items: const [
-              DropdownMenuItem(
-                value: 'guided',
-                child: Text('Guided · short waits'),
-              ),
-              DropdownMenuItem(
-                value: 'garden',
-                child: Text('Garden pace · longer waits'),
-              ),
+          SelectionField<String>(
+            value: c.settings['pace'],
+            label: 'Game pace',
+            options: const [
+              ('guided', 'Guided · short waits'),
+              ('garden', 'Garden pace · longer waits'),
             ],
             onChanged: (v) => c.setSetting('pace', v),
           ),
@@ -260,13 +249,13 @@ class _ParentScreenState extends ConsumerState<ParentScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            DropdownButtonFormField<int>(
-              initialValue: c.settings['timeLimit'],
-              decoration: const InputDecoration(labelText: 'Session reminder'),
-              items: const [
-                DropdownMenuItem(value: 0, child: Text('No limit')),
-                DropdownMenuItem(value: 15, child: Text('15 minutes')),
-                DropdownMenuItem(value: 30, child: Text('30 minutes')),
+            SelectionField<int>(
+              value: c.settings['timeLimit'],
+              label: 'Session reminder',
+              options: const [
+                (0, 'No limit'),
+                (15, '15 minutes'),
+                (30, '30 minutes'),
               ],
               onChanged: (v) => c.setSetting('timeLimit', v),
             ),

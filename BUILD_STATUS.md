@@ -20,6 +20,14 @@ Optional adult email/password accounts connect to `nntizitzglpyfepnmasp`. The pu
 
 ## Verified locally
 
+### Card and choice fixes — 10 October 2026
+
+Activity choices now use wrapping cards: select an item, then select its destination, or long-press and drag. Completed items stay visible, incorrect choices receive feedback, repeated taps cannot apply to another item, and progress is shown explicitly. Learning checks use the same readable cards. Settings/onboarding/plant selectors use scrollable choice panels instead of cramped dropdowns. Growing beds preview the selected plant before planting. Village/Buzz and collection card rows stack their actions to fit narrow screens; card Material/ink rendering and clipping were corrected. Continuous pouring stops when the interaction ends.
+
+Previous native CI exposed `setState() called after dispose()` in model_viewer_plus 1.10.0. The preserved Apache-2.0 source is now vendored with guarded async initialization and immediate cleanup of late-bound local servers, plus corrected shadow/RGBA attributes. Native scene gestures no longer eagerly consume vertical page scrolling. A deterministic disposal-race regression passes. The previous iOS runtime job timed out while its simulator booted; its boot allowance has been increased, but that is not an iOS runtime pass.
+
+The current Flutter suite passes 20 tests, including all 32 lessons, independently labeled accessible choices, wrong/repeat choice actions, the viewer disposal race and all main card layouts/learning checks at 320px with 200% text. Flutter analysis has no issues. The JavaScript web build and Android debug build succeed. Local 390×844 browser QA completed matching with wrong/correct choices, a learning check with wrong/correct answers, and selected Mint through the plant panel, verified its new 3D preview and planted the correct bed. Content (32 quests/eight plants) and all 16 glTF assets validate. Six Deno security tests and the PostgreSQL/PGlite suite pass. See current PR checks for the new native renderer run; physical Android/iPhone gesture/performance acceptance remains open.
+
 - Flutter 3.47.6 analysis: no issues.
 - 17 Flutter tests passed, including a UI test completing all 32 quests, persistence, engine behavior, photo metadata stripping, demo/reset behavior, appearance switching/persistence/device brightness, auth SDK confirmation/session/error behavior and 390px/180% text accessibility.
 - Six Deno contract/security-boundary tests passed; all five functions type-check.

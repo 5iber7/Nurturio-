@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/theme.dart';
+import '../../app/selection_field.dart';
 import '../../core/app_controller.dart';
 import '../../game/engine/process_engine.dart';
 import '../../game/components/plant_art.dart';
@@ -74,21 +75,21 @@ class _GardenScreenState extends ConsumerState<GardenScreen> {
                             ),
                             const SizedBox(height: 12),
                           ],
-                          DropdownButtonFormField<String>(
-                            initialValue: selected[slot],
-                            decoration: const InputDecoration(
-                              labelText: 'Choose a plant',
-                            ),
-                            items: [
+                          SelectionField<String>(
+                            value: selected[slot]!,
+                            label: 'Choose a plant',
+                            options: [
                               for (final option in c.library.plants)
-                                DropdownMenuItem(
-                                  value: option['id'] as String,
-                                  child: Text(option['name']),
+                                (
+                                  option['id'] as String,
+                                  option['name'] as String,
                                 ),
                             ],
                             onChanged: (v) =>
-                                setState(() => selected[slot] = v!),
+                                setState(() => selected[slot] = v),
                           ),
+                          const SizedBox(height: 12),
+                          PlantArt(plant: selected[slot]!, progress: 1),
                           const SizedBox(height: 12),
                           FilledButton.icon(
                             onPressed: () => c.plant(slot, selected[slot]!),

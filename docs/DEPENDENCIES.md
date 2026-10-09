@@ -5,7 +5,7 @@
 - Supabase CLI used locally: 2.120.0. Commands were checked using help before use.
 - Java 21, Android platform/build tools 36, NDK 28.2.13676358.
 - Package constraints in `pubspec.yaml` and resolved transitive versions in `pubspec.lock`.
-- `model_viewer_plus` 1.10.0 and `webview_flutter` 4.14.1 provide bundled glTF rendering. Browser builds load the local module declared in `web/index.html`; native configuration permits the local asset server.
+- `model_viewer_plus` 1.10.0 is pinned as a licensed source copy in `third_party/model_viewer_plus`, with documented lifecycle/gesture/HTML fixes. `webview_flutter` remains 4.14.1. Browser builds load the local module declared in `web/index.html`; native configuration permits the local asset server. Review `NURTURIO_PATCHES.md` before updating the source copy; do not lose the disposal guards.
 - Node asset checks use Khronos `gltf-validator` 2.0.0-dev.3.10, pinned in `package-lock.json`; install with `npm ci`. The original model generator has no package dependencies.
 - GitHub Actions references are pinned to verified release commit SHAs.
 

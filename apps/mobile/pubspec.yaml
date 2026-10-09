@@ -27,7 +27,8 @@ dependencies:
   intl: 0.20.3
   audioplayers: 6.8.1
   video_player: 2.14.1
-  model_viewer_plus: 1.10.0
+  model_viewer_plus:
+    path: ../../third_party/model_viewer_plus
   webview_flutter: 4.14.1
 dev_dependencies:
   flutter_test:

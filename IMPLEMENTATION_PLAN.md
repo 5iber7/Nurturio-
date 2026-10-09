@@ -20,3 +20,9 @@ These checkboxes describe implementation of the initial playable build. See docs
 - [x] Interactive camera exploration, updated light/dark surfaces, responsive navigation and reduced-motion controls.
 - [x] glTF validation, all 32 lesson UI flow, Flutter analysis/tests and Android compilation. Public browser/WebGL QA is recorded in BUILD_STATUS.md.
 - [ ] Physical Android/iPhone GPU, touch gestures, memory and thermal profiling. Web browser QA and successful compilation do not satisfy this check.
+
+## Card and activity fixes — 10 October 2026
+
+- [x] Wrapping choice cards, explicit item/destination selection, progress and feedback, retained completed items, safe repeat actions and pouring timer cleanup.
+- [x] Scrollable settings/plant selectors, planting previews, narrow/large-text layouts, visible card ink feedback and clipped artwork.
+- [x] Guard asynchronous 3D-viewer startup/disposal, document the licensed source patch, and add lifecycle/interaction/layout regression coverage.
